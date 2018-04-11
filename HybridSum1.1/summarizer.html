@@ -67,7 +67,6 @@
     <script src="./scripts/removeStopWords.js"></script>
     <script src="./scripts/TF-IDF.js"></script>
     <script src="./scripts/upper-case.js"></script>
-    <script src="./scripts/wordFrequency.js"></script>
     <scrip src="./scripts/translate-api.js"></script>
     <script src="./scripts/Summarizer.js"></script>
 
@@ -170,7 +169,7 @@ sentences.forEach(s =>{
     s = new Object();
     s.sentence = sentence;
     s.tf_idf = [];
-    s.upperCaseScore;
+    s.upperCaseScore = 0;
     s.index = i;
     s.score = 0;
     
@@ -195,14 +194,15 @@ function printForEach() {
     p7.innerHTML = ""; //para não acumular quando chamar a function mais de uma vez
     var i = 0; //contador para arrayFrequenceText
 
-    arrayObjectWord.forEach(objectWord => {
+    /*arrayObjectWord.forEach(objectWord => {
         p7.innerHTML = p7.innerHTML +
             "word: " + objectWord.word + "<br>NumberSentence: " + objectWord.numberSentence +
             "<br>Frenquece: " + objectWord.frequenceSen + "<br>" + "Frenquence text: " +
             objectWord.frequenceText + "<br>" + "TF-IDF: " + objectWord.tf_idf + "<br><br>";
         i++;
 
-    });
+    });*/
+    
     
     
     // new problem rapical detectada 
@@ -218,7 +218,12 @@ TF_IDF(arrayObjectSentence, arrayObjectWord);
     S.score += S.tf_idf;
     
     });
-
+    
+    arrayObjectSentence.forEach(S =>{   
+        
+        S.score += S.upperCaseScore;
+        
+        });
     
     var numberSentence = document.getElementById('input');
     parseInt(numberSentence);
@@ -233,7 +238,6 @@ TF_IDF(arrayObjectSentence, arrayObjectWord);
     }
 
 };
-
 
 function resetToTextOriginal(jog,jooj){
     jog.innerHTML = jooj;

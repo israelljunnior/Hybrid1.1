@@ -234,6 +234,12 @@ var p8 = document.getElementById("p8");
     S.score += S.tf_idf;
     });
 
+    arrayObjectSentence.forEach(S =>{   
+        alert(S.index +"---"+S.upperCase+"----"+S.upperCaseScore)
+        S.score += S.upperCaseScore;
+        
+        });
+
     
     console.log(summarizer(arrayObjectSentence));
 };

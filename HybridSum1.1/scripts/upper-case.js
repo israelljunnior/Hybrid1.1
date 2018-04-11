@@ -13,7 +13,7 @@ function upperCase(arrayObjectSentence, words, arrayObjectWord) {
         arrayObjectSentence[i].upperCase = 0;
         
         for (j = 0; j < words.length; j++) {
-            var ucase = new RegExp("^[A-Z]");
+            var ucase = new RegExp("^[A-Z\u00C0-\u00FF]");
             
             if (words[j].match(ucase)) {
                 var isRelevantWord = false;
