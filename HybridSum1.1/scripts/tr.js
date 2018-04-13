@@ -1,6 +1,6 @@
 function titleResemblance(wordsTitle, arrayObjectSentence){
     var titleLength = wordsTitle.length;
-    alert(titleLength);
+    
     
     for(j = 0; j < arrayObjectSentence.length; j++){
         var NTw = 0;
@@ -14,7 +14,7 @@ function titleResemblance(wordsTitle, arrayObjectSentence){
 
         }
         if(NTw > 0){
-            alert(NTw);
+            
             arrayObjectSentence[j].tr += NTw / titleLength;
            
         }        

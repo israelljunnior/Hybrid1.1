@@ -205,7 +205,7 @@ TF_IDF(arrayObjectSentence, arrayObjectWord);
         removeHtmlXml(title);
         title.removeStopWords();
         var wordsTitle = title.match(/(\w|\s)*\w(?=")|[\w\u00C0-\u00FF]+/g);
-        alert(wordsTitle);
+        
         titleResemblance(wordsTitle, arrayObjectSentence);
 
 
