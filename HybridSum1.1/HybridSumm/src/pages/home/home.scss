@@ -1,0 +1,15 @@
+ion-card{
+  display: flex;
+  flex-direction: column;
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+.texto{
+  resize: none !important;
+}
+
+.btn{
+  background: deepskyblue;
+  color:white;
+}

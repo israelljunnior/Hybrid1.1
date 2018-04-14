@@ -1,0 +1,54 @@
+<br>
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      HybridSumm
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label stacked class="label-md-dark">Title</ion-label>
+    <ion-input placeholder="Ex: The Bio-informatics" ngDefaultControl [(ngModel)]="titulo"></ion-input>
+    </ion-item>
+
+  <br>
+
+  <ion-item>
+    <ion-label stacked >Text</ion-label>
+    <ion-textarea placeholder="Place the text that you want to summarize." ngDefaultControl [(ngModel)]="texto" class="texto"></ion-textarea>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Sentence Length</ion-label>
+    <ion-input ></ion-input>
+  </ion-item>
+
+  <br>
+
+  <button ion-button outline class="btn" (click)="">Summarize</button>
+  <button ion-button outline class="btn">Reset text</button>
+
+  <br><br>
+
+  <ion-card>
+
+
+    <ion-card-content>
+      <b>Title:</b> {{titulo}}<br>
+      <div class="hr"></div>
+      Summary Output: <br><br>{{texto}}
+    </ion-card-content>
+
+    </ion-card>
+  <br>
+
+  <div *ngIf="texto">
+    <button ion-button outline class="btn">Translate</button>
+  </div>
+
+
+
+</ion-content>
