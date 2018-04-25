@@ -7,9 +7,15 @@ ion-card{
 
 .texto{
   resize: none !important;
+  height: auto !important;
 }
 
 .btn{
   background: deepskyblue;
   color:white;
+}
+
+.erro{
+  color:red;
+  margin-left: 4%;
 }

@@ -6,13 +6,35 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>result</ion-title>
+  <ion-navbar hideBackButton>
+    <ion-title>
+      Summary Result
+    </ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+  <ion-card>
+
+
+    <ion-card-content>
+      <b>Title:</b><br><br>{{resultSumm.sTitle}}<br>
+      <div class="hr"></div>
+      <b>Summary Output:</b><br><br>{{resultSumm.sText}}
+    </ion-card-content>
+
+  </ion-card>
+  <br>
+
+  <div *ngIf="resultSumm.sText">
+    <button ion-button outline class="btn">Translate</button>
+    <button ion-button outline class="btn" (click)="goBack()">Back</button>
+  </div>
+
+
+
 
 </ion-content>

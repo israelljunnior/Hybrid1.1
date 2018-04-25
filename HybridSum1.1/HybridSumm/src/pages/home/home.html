@@ -1,54 +1,51 @@
 <br>
 <ion-header>
   <ion-navbar>
+
     <ion-title>
-      HybridSumm
+      Menu
     </ion-title>
+
+    <ion-buttons start>
+      <button ion-button icon-only menuToggle="left">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
 
+  <form [formGroup]="summForm" novalidate (submit)="nextPageWithData()">
+
   <ion-item>
     <ion-label stacked class="label-md-dark">Title</ion-label>
-    <ion-input placeholder="Ex: The Bio-informatics" ngDefaultControl [(ngModel)]="titulo"></ion-input>
-    </ion-item>
+    <ion-input placeholder="Ex: The Bio-informatics" formControlName="sTitle" ></ion-input>
+  </ion-item>
 
-  <br>
+  <p *ngIf="sTitle.hasError('required') && sTitle.touched" class="erro">You must enter a title to summarize.</p>
+
 
   <ion-item>
     <ion-label stacked >Text</ion-label>
-    <ion-textarea placeholder="Place the text that you want to summarize." ngDefaultControl [(ngModel)]="texto" class="texto"></ion-textarea>
+    <ion-textarea placeholder="Place the text that you want to summarize." formControlName="sText" class="texto"></ion-textarea>
   </ion-item>
+
+  <p *ngIf="sText.hasError('required') && sText.touched" class="erro">You must enter a text to summarize.</p>
 
   <ion-item>
     <ion-label stacked>Sentence Length</ion-label>
-    <ion-input ></ion-input>
+    <ion-input type="number" formControlName="sLength"></ion-input>
   </ion-item>
 
+  <p *ngIf="sLength.hasError('required') && sLength.touched" class="erro">You must enter the sentence length to summarize.</p>
+
   <br>
 
-  <button ion-button outline class="btn" (click)="">Summarize</button>
+  <button ion-button outline class="btn" type="submit" [disabled]="!summForm.valid">Summarize</button>
   <button ion-button outline class="btn">Reset text</button>
 
-  <br><br>
-
-  <ion-card>
-
-
-    <ion-card-content>
-      <b>Title:</b> {{titulo}}<br>
-      <div class="hr"></div>
-      Summary Output: <br><br>{{texto}}
-    </ion-card-content>
-
-    </ion-card>
-  <br>
-
-  <div *ngIf="texto">
-    <button ion-button outline class="btn">Translate</button>
-  </div>
-
-
+  </form>
 
 </ion-content>

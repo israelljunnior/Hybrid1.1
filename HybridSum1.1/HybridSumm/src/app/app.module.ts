@@ -7,12 +7,16 @@ import { FormsModule} from '@angular/forms';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { ResultPage } from '../pages/result/result';
+import { AboutPage } from '../pages/about/about';
 
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    ResultPage,
+    AboutPage
   ],
   imports: [
     BrowserModule,
@@ -22,13 +26,17 @@ import { HomePage } from '../pages/home/home';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    ResultPage,
+    AboutPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
+
 export class AppModule {
 }

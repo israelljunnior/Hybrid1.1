@@ -25680,13 +25680,17 @@ ion-navbar.toolbar {
 
 .toolbar-background {
   background: deepskyblue;
-  color: black;
+  color: white !important;
 }
 
 .hr {
   border-bottom: 1px solid #ccc;
   margin: 10px 0;
   width: 100%;
+}
+
+ion-card {
+  min-height: 70% !important;
 }
 
 ion-card {
@@ -25705,9 +25709,15 @@ ion-card {
 
 .texto {
   resize: none !important;
+  height: auto !important;
 }
 
 .btn {
   background: deepskyblue;
   color: white;
+}
+
+.erro {
+  color: red;
+  margin-left: 4%;
 }
