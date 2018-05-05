@@ -4,7 +4,7 @@ import { ResultPage} from '../result/result';
 import { MenuController} from 'ionic-angular';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Directive, HostListener, ElementRef } from '@angular/core';
-import '../../../node_modules/google-translate-api/index.js';
+
 
 import {AboutPage} from '../about/about';
 

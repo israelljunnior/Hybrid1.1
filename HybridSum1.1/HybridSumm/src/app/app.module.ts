@@ -9,19 +9,23 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ResultPage } from '../pages/result/result';
 import { AboutPage } from '../pages/about/about';
-
+import { Nlp } from '../pages/result/methodsSummarizer/nlp';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ResultPage,
-    AboutPage
+    AboutPage,
+    
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    
+    
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -33,7 +37,8 @@ import { AboutPage } from '../pages/about/about';
   providers: [
     StatusBar,
     SplashScreen,
-
+    Nlp,
+    
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
