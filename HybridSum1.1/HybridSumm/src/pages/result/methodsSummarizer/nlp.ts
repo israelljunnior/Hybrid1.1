@@ -1,20 +1,41 @@
 import { Word } from './word.model'
-import { Sentence } from './sentence.model'
+import { Sentence } from './sentence.model';
 import { removeStopWords, removeHtmlXml } from './scripts/stopWords'
 import { frequenceText } from './scripts/wordFrequency'
 import { upperCase } from './scripts/upperCase'
 import { TFIDF } from './scripts/TFIDF'
-import { titleResemblance } from './scripts/titleResemblance';
+import { titleResemblance } from './scripts/titleResemblance'
+import { Input } from '@angular/core'
+
 
 export class Nlp {
 
     private text: string 
     private title:string 
-    private textSummarizer: string
+    private numberSentenceInSummarizied: number
+    private textSummarizer: string = ""
     private sentence: string = "";
     private arrayObjectWord: Word[] = []
     private arrayObjectSentence: Sentence[] = []
 
+    
+    public nlp(title: string, text: string, nSentences: number) {
+       
+        this.title = this.removeHtmlXml(title)
+        this.text = this.removeHtmlXml(text)
+        this.numberSentenceInSummarizied = nSentences
+        
+        // Methods
+        this.splitText(this.text)
+        this.createObjectWord()
+        this.frequenceText(this.arrayObjectWord, this.arrayObjectSentence)
+        this.upperCase(this.arrayObjectSentence)
+        this.TFIDF(this.arrayObjectWord, this.arrayObjectSentence)
+        this.titleResemblance(this.title, this.arrayObjectSentence)
+        this.arrayObjectSentence = this.ranking(this.arrayObjectSentence)
+        this.summ(this.arrayObjectSentence, this.numberSentenceInSummarizied)
+
+    }
     // getters and setters 
     public getText(): string { return this.text }
     public setText(newText: string) { this.text = newText }
@@ -112,9 +133,30 @@ export class Nlp {
         }
     }
 
+    public ranking(arrayObjectSentence:Sentence[]): Sentence[] {
+
+        let ranking: Sentence[] = arrayObjectSentence.sort(function (a , b) { return b.finalScore - a.finalScore})
+        
+        return ranking
+
+    }
+
+    public summ(arrayObjectSentence: Sentence[], length: number): void {
+
+      let arraySentenceSumm: Sentence[] = []
 
 
-    
+        for(let i = 0; i < length; i++){
+        arraySentenceSumm.push(arrayObjectSentence[i])    
+        }
+        
+        arraySentenceSumm = arraySentenceSumm.sort(function(a , b) { return a.index - b.index})
+        
+        arraySentenceSumm.forEach($s => {
+            this.textSummarizer += $s.sentence
+        })
+
+    }
 
 
 

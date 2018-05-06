@@ -39,6 +39,7 @@ import { Nlp } from '../pages/result/methodsSummarizer/nlp';
     SplashScreen,
     Nlp,
     
+    
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

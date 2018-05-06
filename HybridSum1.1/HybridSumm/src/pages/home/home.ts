@@ -10,7 +10,7 @@ import {AboutPage} from '../about/about';
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
 })
 
 
@@ -28,7 +28,8 @@ export class HomePage {
   }
 
 
-  constructor(public navCtrl: NavController, public menuCtrl:MenuController, formbuilder: FormBuilder, public element: ElementRef) {
+  constructor(public navCtrl: NavController, public menuCtrl:MenuController,
+            formbuilder: FormBuilder, public element: ElementRef) {
 
       this.summForm = formbuilder.group({
         sTitle: ['',Validators.required],
@@ -51,6 +52,7 @@ export class HomePage {
 
 
   nextPageWithData(){
+    
     this.navCtrl.push(ResultPage,{
       paramTitle: this.sTitle.value,
       paramText: this.sText.value,

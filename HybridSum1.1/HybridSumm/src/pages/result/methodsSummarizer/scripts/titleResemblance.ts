@@ -25,9 +25,8 @@ export function titleResemblance(title: string, arrayObjectSentence: Sentence[])
                         NTW++
                     }
                     if(NTW > 0){
-                        alert(NTW)
-                        alert(titleWords.length+"title length")
-                        arrayObjectSentence[j].titleResemblance += NTW / titleWords.length
+                        
+                        arrayObjectSentence[j].titleResemblance = NTW / titleWords.length
                         arrayObjectSentence[j].finalScore +=  NTW / titleWords.length
                     }
                 wordsChecked.push(titleWords[i])
@@ -38,8 +37,6 @@ export function titleResemblance(title: string, arrayObjectSentence: Sentence[])
                     NTW++
                 }
                 if(NTW > 0){
-                    alert(NTW)
-                    alert(titleWords.length+"title length")
                     arrayObjectSentence[j].titleResemblance += NTW / titleWords.length
                      arrayObjectSentence[j].finalScore += NTW / titleWords.length
                 }

@@ -1,6 +1,6 @@
 webpackJsonp([2],{
 
-/***/ 101:
+/***/ 102:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ webpackJsonp([2],{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home__ = __webpack_require__(78);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__methodsSummarizer_nlp__ = __webpack_require__(280);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__methodsSummarizer_nlp__ = __webpack_require__(154);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -39,46 +39,31 @@ var ResultPage = /** @class */ (function () {
             sLength: this.navParams.get('paramLength')
         };
     }
-    ResultPage.prototype.status = function () {
-        this.nlp.setText(this.resultSumm.sText);
-        this.nlp.setTitle(this.resultSumm.sTitle);
-        console.log(this.nlp.getText());
-        this.nlp.splitText(this.nlp.getText());
-        console.log(this.nlp.getArrayObjectSentence());
-        this.nlp.createObjectWord();
-        this.nlp.frequenceText(this.nlp.getArrayObjectWord(), this.nlp.getArrayObjectSentence());
-        console.log(this.nlp.getArrayObjectWord());
-        this.nlp.upperCase(this.nlp.getArrayObjectSentence());
-        console.log(this.nlp.getArrayObjectSentence());
-        this.nlp.TFIDF(this.nlp.getArrayObjectWord(), this.nlp.getArrayObjectSentence());
-        console.log(this.nlp.getArrayObjectWord());
-        console.log(this.nlp.getArrayObjectSentence());
-        this.nlp.titleResemblance(this.nlp.getTitle(), this.nlp.getArrayObjectSentence());
-        console.log(this.nlp.getArrayObjectSentence());
-    };
     ResultPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad ResultPage');
+        this.nlp.eraseArrayObjectSentence();
+        this.nlp.eraseArrayObjectWord();
+        this.nlp.nlp(this.resultSumm.sTitle, this.resultSumm.sText, this.resultSumm.sLength);
+        this.resultSumm.sText = this.nlp.getTextSummarizer();
     };
     ResultPage.prototype.goBack = function () {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__home_home__["a" /* HomePage */]);
-        this.nlp.eraseArrayObjectSentence();
-        this.nlp.eraseArrayObjectWord();
     };
     ResultPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-result',template:/*ion-inline-start:"C:\Apps\IonicHybridSumm\HybridSumm1.1\HybridSum1.1\HybridSumm\src\pages\result\result.html"*/'<!--\n\n  Generated template for the ResultPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar hideBackButton>\n\n    <ion-title>\n\n      Summary Result\n\n    </ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <ion-card>\n\n\n\n\n\n    <ion-card-content>\n\n      <b>Title:</b><br><br>{{resultSumm.sTitle}}<br>\n\n      <div class="hr"></div>\n\n      <b>Summary Output:</b><br><br>{{resultSumm.sText}}\n\n    </ion-card-content>\n\n\n\n  </ion-card>\n\n  <br>\n\n\n\n  <div *ngIf="resultSumm.sText">\n\n    <button ion-button outline class="btn" (click)="status()">status</button>\n\n    <button ion-button outline class="btn" (click)="goBack()">Back</button>\n\n  </div>\n\n\n\n\n\n\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Apps\IonicHybridSumm\HybridSumm1.1\HybridSum1.1\HybridSumm\src\pages\result\result.html"*/,
+            selector: 'page-result',template:/*ion-inline-start:"C:\Apps\IonicHybridSumm\HybridSumm1.1\HybridSum1.1\HybridSumm\src\pages\result\result.html"*/'<!--\n\n  Generated template for the ResultPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar hideBackButton>\n\n    <ion-title>\n\n      Summary Result\n\n    </ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <ion-card>\n\n\n\n\n\n    <ion-card-content>\n\n      <b>Title:</b><br><br>{{resultSumm.sTitle}}<br>\n\n      <div class="hr"></div>\n\n      <b>Summary Output:</b><br><br>{{resultSumm.sText}}\n\n    </ion-card-content>\n\n\n\n  </ion-card>\n\n  <br>\n\n\n\n  <div *ngIf="resultSumm.sText">\n\n    <button ion-button outline class="btn">SEU PORRA Agora falta o translate</button>\n\n    <button ion-button outline class="btn" (click)="goBack()">Back</button>\n\n  </div>\n\n\n\n\n\n\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Apps\IonicHybridSumm\HybridSumm1.1\HybridSum1.1\HybridSumm\src\pages\result\result.html"*/,
+            providers: [__WEBPACK_IMPORTED_MODULE_3__methodsSummarizer_nlp__["a" /* Nlp */]]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__methodsSummarizer_nlp__["a" /* Nlp */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__methodsSummarizer_nlp__["a" /* Nlp */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__methodsSummarizer_nlp__["a" /* Nlp */]])
     ], ResultPage);
     return ResultPage;
-    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=result.js.map
 
 /***/ }),
 
-/***/ 111:
+/***/ 112:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -91,20 +76,20 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 111;
+webpackEmptyAsyncContext.id = 112;
 
 /***/ }),
 
-/***/ 152:
+/***/ 153:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
 	"../pages/about/about.module": [
-		278,
+		279,
 		1
 	],
 	"../pages/result/result.module": [
-		279,
+		280,
 		0
 	]
 };
@@ -119,7 +104,7 @@ function webpackAsyncContext(req) {
 webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
-webpackAsyncContext.id = 152;
+webpackAsyncContext.id = 153;
 module.exports = webpackAsyncContext;
 
 /***/ }),
@@ -128,97 +113,151 @@ module.exports = webpackAsyncContext;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = removeHtmlXml;
-/* harmony export (immutable) */ __webpack_exports__["b"] = removeStopWords;
-function removeHtmlXml(texto) {
-    var regex = /(<([^>]+)>)/ig;
-    var result = texto.replace(regex, "");
-    return result;
-}
-function isStopWord(word) {
-    var regex = new RegExp("\\b" + word + "\\b", "i");
-    if (stopWords.search(regex) < 0) {
-        return false;
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Nlp; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__word_model__ = __webpack_require__(247);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__sentence_model__ = __webpack_require__(248);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__scripts_stopWords__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__scripts_wordFrequency__ = __webpack_require__(249);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__scripts_upperCase__ = __webpack_require__(250);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__scripts_TFIDF__ = __webpack_require__(251);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__scripts_titleResemblance__ = __webpack_require__(252);
+
+
+
+
+
+
+
+var Nlp = /** @class */ (function () {
+    function Nlp() {
+        this.textSummarizer = "";
+        this.sentence = "";
+        this.arrayObjectWord = [];
+        this.arrayObjectSentence = [];
     }
-    else {
-        return true;
-    }
-}
-function removeStopWords(string) {
-    var words = new Array();
-    string.replace(/\b[\w\u00C0-\u00FF]+\b/ig, function ($0) {
-        if (!isStopWord($0)) {
-            words[words.length] = $0.trim();
+    Nlp.prototype.nlp = function (title, text, nSentences) {
+        this.title = this.removeHtmlXml(title);
+        this.text = this.removeHtmlXml(text);
+        this.numberSentenceInSummarizied = nSentences;
+        // Methods
+        this.splitText(this.text);
+        this.createObjectWord();
+        this.frequenceText(this.arrayObjectWord, this.arrayObjectSentence);
+        this.upperCase(this.arrayObjectSentence);
+        this.TFIDF(this.arrayObjectWord, this.arrayObjectSentence);
+        this.titleResemblance(this.title, this.arrayObjectSentence);
+        this.arrayObjectSentence = this.ranking(this.arrayObjectSentence);
+        this.summ(this.arrayObjectSentence, this.numberSentenceInSummarizied);
+    };
+    // getters and setters 
+    Nlp.prototype.getText = function () { return this.text; };
+    Nlp.prototype.setText = function (newText) { this.text = newText; };
+    Nlp.prototype.getTitle = function () { return this.title; };
+    Nlp.prototype.setTitle = function (newTitle) { this.title = newTitle; };
+    Nlp.prototype.getTextSummarizer = function () { return this.textSummarizer; };
+    Nlp.prototype.setTextSummarizer = function (newText) { this.textSummarizer = newText; };
+    Nlp.prototype.getArrayObjectWord = function () { return this.arrayObjectWord; };
+    Nlp.prototype.eraseArrayObjectWord = function () { this.arrayObjectWord = []; };
+    Nlp.prototype.getArrayObjectSentence = function () { return this.arrayObjectSentence; };
+    Nlp.prototype.eraseArrayObjectSentence = function () { this.arrayObjectSentence = []; };
+    //constructor(text: string) { this.text = text }
+    //METHODS
+    // remove tags
+    Nlp.prototype.removeHtmlXml = function (string) {
+        string = Object(__WEBPACK_IMPORTED_MODULE_2__scripts_stopWords__["a" /* removeHtmlXml */])(string);
+        return string;
+    };
+    // this method remove all StopWords in text
+    Nlp.prototype.removeStopWords = function (string) {
+        string = Object(__WEBPACK_IMPORTED_MODULE_2__scripts_stopWords__["b" /* removeStopWords */])(string);
+        return string;
+    };
+    Nlp.prototype.frequenceText = function (arrayObjectWord, arrayObjectSentence) {
+        Object(__WEBPACK_IMPORTED_MODULE_3__scripts_wordFrequency__["a" /* frequenceText */])(arrayObjectWord, arrayObjectSentence);
+    };
+    Nlp.prototype.upperCase = function (arrayObjectSentence) {
+        Object(__WEBPACK_IMPORTED_MODULE_4__scripts_upperCase__["a" /* upperCase */])(arrayObjectSentence);
+    };
+    Nlp.prototype.TFIDF = function (arrayObjectWord, arrayObjectSentence) {
+        Object(__WEBPACK_IMPORTED_MODULE_5__scripts_TFIDF__["a" /* TFIDF */])(arrayObjectWord, arrayObjectSentence);
+    };
+    Nlp.prototype.titleResemblance = function (title, arrayObjectSentence) {
+        Object(__WEBPACK_IMPORTED_MODULE_6__scripts_titleResemblance__["a" /* titleResemblance */])(title, arrayObjectSentence);
+    };
+    //split text in sentences and create objectSentence
+    Nlp.prototype.splitText = function (string) {
+        var indexSentence = 0;
+        for (var i = 0; i < string.length; i++) {
+            this.sentence += string[i];
+            if (string[i] == "." || string[i] == "?") {
+                if ('0123456789'.indexOf(string[i + 1]) == -1) {
+                    indexSentence++; //
+                    if (string[i + 1] == "." && string[i + 2] == ".") {
+                        this.sentence += string[i + 1];
+                        this.sentence += string[i + 2];
+                        var objectSentence = new __WEBPACK_IMPORTED_MODULE_1__sentence_model__["a" /* Sentence */](this.sentence, indexSentence);
+                        this.arrayObjectSentence.push(objectSentence);
+                        this.sentence = "";
+                        i += 2;
+                    }
+                    else {
+                        var objectSentence = new __WEBPACK_IMPORTED_MODULE_1__sentence_model__["a" /* Sentence */](this.sentence, indexSentence);
+                        this.arrayObjectSentence.push(objectSentence);
+                        this.sentence = "";
+                    }
+                }
+            }
         }
-    });
-    return words.join(" "); // Retorna o texto sem stopwords
-}
-var stopWords = "a,able,about,above,abst,accordance,according,accordingly,across,act,actually,added,adj,\
-affected,affecting,affects,after,afterwards,again,against,ah,all,almost,alone,along,already,also,although,\
-always,am,among,amongst,an,and,announce,another,any,anybody,anyhow,anymore,anyone,anything,anyway,anyways,\
-anywhere,apparently,approximately,are,aren,arent,arise,around,as,aside,ask,asking,at,auth,available,away,awfully,\
-b,back,be,became,because,become,becomes,becoming,been,before,beforehand,begin,beginning,beginnings,begins,behind,\
-being,believe,below,beside,besides,between,beyond,biol,both,brief,briefly,but,by,c,ca,came,can,cannot,can't,cause,causes,\
-certain,certainly,co,com,come,comes,contain,containing,contains,could,couldnt,d,date,did,didn't,different,do,does,doesn't,\
-doing,done,don't,down,downwards,due,during,e,each,ed,edu,effect,eg,eight,eighty,either,else,elsewhere,end,ending,enough,\
-especially,et,et-al,etc,even,ever,every,everybody,everyone,everything,everywhere,ex,except,f,far,few,ff,fifth,first,five,fix,\
-followed,following,follows,for,former,formerly,forth,found,four,from,further,furthermore,g,gave,get,gets,getting,give,given,gives,\
-giving,go,goes,gone,got,gotten,h,had,happens,hardly,has,hasn't,have,haven't,having,he,hed,hence,her,here,hereafter,hereby,herein,\
-heres,hereupon,hers,herself,hes,hi,hid,him,himself,his,hither,home,how,howbeit,however,hundred,i,id,ie,if,i'll,im,immediate,\
-immediately,importance,important,in,inc,indeed,index,information,instead,into,invention,inward,is,isn't,it,itd,it'll,its,itself,\
-i've,j,just,k,keep,keeps,kept,kg,km,know,known,knows,l,largely,last,lately,later,latter,latterly,least,less,lest,let,lets,like,\
-liked,likely,line,little,'ll,look,looking,looks,ltd,m,made,mainly,make,makes,many,may,maybe,me,mean,means,meantime,meanwhile,\
-merely,mg,might,million,miss,ml,more,moreover,most,mostly,mr,mrs,much,mug,must,my,myself,n,na,name,namely,nay,nd,near,nearly,\
-necessarily,necessary,need,needs,neither,never,nevertheless,new,next,nine,ninety,no,nobody,non,none,nonetheless,noone,nor,\
-normally,nos,not,noted,nothing,now,nowhere,o,obtain,obtained,obviously,of,off,often,oh,ok,okay,old,omitted,on,once,one,ones,\
-only,onto,or,ord,other,others,otherwise,ought,our,ours,ourselves,out,outside,over,overall,owing,own,p,page,pages,part,\
-particular,particularly,past,per,perhaps,placed,please,plus,poorly,possible,possibly,potentially,pp,predominantly,present,\
-previously,primarily,probably,promptly,proud,provides,put,q,que,quickly,quite,qv,r,ran,rather,rd,re,readily,really,recent,\
-recently,ref,refs,regarding,regardless,regards,related,relatively,research,respectively,resulted,resulting,results,right,run,s,\
-said,same,saw,say,saying,says,sec,section,see,seeing,seem,seemed,seeming,seems,seen,self,selves,sent,seven,several,shall,she,shed,\
-she'll,shes,should,shouldn't,show,showed,shown,showns,shows,significant,significantly,similar,similarly,since,six,slightly,so,\
-some,somebody,somehow,someone,somethan,something,sometime,sometimes,somewhat,somewhere,soon,sorry,specifically,specified,specify,\
-specifying,still,stop,strongly,sub,substantially,successfully,such,sufficiently,suggest,sup,sure,t,take,taken,taking,tell,tends,\
-th,than,thank,thanks,thanx,that,that'll,thats,that've,the,their,theirs,them,themselves,then,thence,there,thereafter,thereby,\
-thered,therefore,therein,there'll,thereof,therere,theres,thereto,thereupon,there've,these,they,theyd,they'll,theyre,they've,\
-think,this,those,thou,though,thoughh,thousand,throug,through,throughout,thru,thus,til,tip,to,together,too,took,toward,towards,\
-tried,tries,truly,try,trying,ts,twice,two,u,un,under,unfortunately,unless,unlike,unlikely,until,unto,up,upon,ups,us,use,used,\
-useful,usefully,usefulness,uses,using,usually,v,value,various,'ve,very,via,viz,vol,vols,vs,w,want,wants,was,wasn't,way,we,wed,\
-welcome,we'll,went,were,weren't,we've,what,whatever,what'll,whats,when,whence,whenever,where,whereafter,whereas,whereby,wherein,\
-wheres,whereupon,wherever,whether,which,while,whim,whither,who,whod,whoever,whole,who'll,whom,whomever,whos,whose,why,widely,\
-willing,wish,with,within,without,won't,words,world,would,wouldn't,www,x,y,yes,yet,you,youd,you'll,your,youre,yours,yourself,\
-yourselves,you've,z,zero,a,à,adeus,agora,aí,ainda,além,algo,algumas,alguns,ali,ano,anos,antes,ao,aos,apenas,apoio,após,aquela,aquelas,aquele,aqueles,\ aqui,aquilo,área,as,às,assim,até,atrás,através,baixo,bastante,bem,boa,boas,bom,bons,breve,cá,cada,catorze,cedo,cento,certamente,certeza,cima,\
-cinco,coisa,com,como,conselho,contra,custa,da,dá,dão,daquela,daquelas,daquele,daqueles,dar,das,de,debaixo,demais,dentro,depois,desde,dessa,\
-dessas,desse,desses,desta,destas,deste,destes,deve,deverá,dez,dezanove,dezasseis,dezassete,dezoito,dia,diante,diz,dizem,dizer,do,dois,dos,\
-doze,duas,dúvida,e,é,ela,elas,ele,eles,em,embora,entre,era,és,essa,essas,esse,esses,esta,está,estão,estar,estas,estás,estava,este,estes,esteve,\
-estive,estivemos,estiveram,estiveste,estivestes,estou,eu,exemplo,faço,falta,favor,faz,fazeis,fazem,fazemos,fazer,fazes,fez,fim,final,foi,fomos,\
-for,foram,forma,foste,fostes,fui,geral,grande,grandes,grupo,há,hoje,hora,horas,isso,isto,já,lá,lado,local,logo,longe,lugar,maior,maioria,mais,mal,\
-mas,máximo,me,meio,menor,menos,mês,meses,meu,meus,mil,minha,minhas,momento,muito,muitos,na,nada,não,naquela,naquelas,naquele,naqueles,nas,nem,nenhuma,\
-nessa,nessas,nesse,nesses,nesta,nestas,neste,nestes,nível,no,noite,nome,nos,nós,nossa,nossas,nosso,nossos,nova,novas,nove,novo,novos,num,numa,\
-número,nunca,o,obra,obrigada,obrigado,oitava,oitavo,oito,onde,ontem,onze,os,ou,outra,outras,outro,outros,para,parece,parte,partir,paucas,pela,\
-pelas,pelo,pelos,perto,pode,pôde,podem,poder,põe,põem,ponto,pontos,por,porque,porquê,posição,possível,possivelmente,posso,pouca,pouco,poucos,\
-primeira,primeiras,primeiro,primeiros,própria,próprias,próprio,próprios,próxima,próximas,próximo,próximos,puderam,quáis,qual,quando,quanto,quarta,\
-quarto,quatro,que,quê,quem,quer,quereis,querem,queremas,queres,quero,questão,quinta,quinto,quinze,relação,sabe,sabem,são,se,segunda,segundo,sei,\
-seis,sem,sempre,ser,seria,sete,sétima,sétimo,seu,seus,sexta,sexto,sim,sistema,sob,sobre,sois,somos,sou,sua,suas,tal,talvez,também,tanta,tantas,\
-tanto,tão,tarde,te,tem,têm,temos,tendes,tenho,tens,ter,terceira,terceiro,teu,teus,teve,tive,tivemos,tiveram,tiveste,tivestes,toda,todas,todo,\
-todos,trabalho,três,treze,tu,tua,tuas,tudo,um,uma,umas,uns,vai,vais,vão,vários,vem,vêm,vens,ver,vez,vezes,viagem,vindo,vinte,você,vocês,vos,vós,\
-vossa,vossas,vosso,vossos,él,ésta,éstas,éste,éstos,última,últimas,último,últimos,a,añadió,aún,actualmente,adelante,además,afirmó,agregó,ahí,\
-ahora,al,algún,algo,alguna,algunas,alguno,algunos,alrededor,ambos,ante,anterior,antes,apenas,aproximadamente,aquí,así,aseguró,aunque,ayer,bajo,\
-bien,buen,buena,buenas,bueno,buenos,cómo,cada,casi,cerca,cierto,cinco,comentó,como,con,conocer,consideró,considera,contra,cosas,creo,cual,cuales,\
-cualquier,cuando,cuanto,cuatro,cuenta,da,dado,dan,dar,de,debe,deben,debido,decir,dejó,del,demás,dentro,desde,después,dice,dicen,dicho,dieron,\
-diferente,diferentes,dijeron,dijo,dio,donde,dos,durante,e,ejemplo,el,ella,ellas,ello,ellos,embargo,en,encuentra,entonces,entre,era,eran,es,esa,\
-esas,ese,eso,esos,está,están,esta,estaba,estaban,estamos,estar,estará,estas,este,esto,estos,estoy,estuvo,ex,existe,existen,explicó,expresó,fin,\
-fue,fuera,fueron,gran,grandes,ha,había,habían,haber,habrá,hace,hacen,hacer,hacerlo,hacia,haciendo,han,hasta,hay,haya,he,hecho,hemos,hicieron,hizo,\
-hoy,hubo,igual,incluso,indicó,informó,junto,la,lado,las,le,les,llegó,lleva,llevar,lo,los,luego,lugar,más,manera,manifestó,mayor,me,mediante,mejor,\
-mencionó,menos,mi,mientras,misma,mismas,mismo,mismos,momento,mucha,muchas,mucho,muchos,muy,nada,nadie,ni,ningún,ninguna,ningunas,ninguno,ninguno,no,\
-nos,nosotras,nosotros,nuestra,nuestras,nuestro,nuestros,nueva,nuevas,nuevo,nuevos,nunca,o,ocho,otra,otras,otro,otros,para,parece,parte,partir,pasada,\
-pasado,pero,pesar,poca,pocas,poco,pocos,podemos,podrá,podrán,podría,podrían,poner,por,porque,posible,próximo,próximos,primer,primera,primero,primeros,\
-principalmente,propia,propias,propio,propios,pudo,pueda,puede,pueden,pues,qué,que,quedó,queremos,quién,quien,quienes,quiere,realizó,realizado,\
-realizar,respecto,sí,sólo,se,señaló,sea,sean,según,segunda,segundo,seis,ser,será,serán,sería,si,sido,siempre,siendo,siete,sigue,siguiente,sin,\
-sino,sobre,sola,solamente,solas,solo,solos,son,su,sus,tal,también,tampoco,tan,tanto,tenía,tendrá,tendrán,tenemos,tener,tenga,tengo,tenido,tercera,\
-tiene,tienen,toda,todas,todavía,todo,todos,total,tras,trata,través,tres,tuvo,un,una,unas,uno,unos,usted,va,vamos,van,varias,varios,veces,\
-ver,vez,y,ya,yo";
-//# sourceMappingURL=stopWords.js.map
+    };
+    //Create objectWord
+    Nlp.prototype.createObjectWord = function () {
+        var words = this.text.match(/(\w|\s)*\w(?=")|[\w\u00C0-\u00FF]+/ig); //get all elements in text
+        var isWord = new RegExp(/[\w\u00C0-\u00FF]/ig);
+        var _loop_1 = function (i) {
+            //these conditions checks if the element in array is a word and stop word
+            if (Object(__WEBPACK_IMPORTED_MODULE_2__scripts_stopWords__["b" /* removeStopWords */])(words[i]) /*&& words[i].match(isWord)*/) {
+                if (this_1.arrayObjectWord.length > 0) {
+                    var wasChecked_1 = false;
+                    this_1.arrayObjectWord.forEach(function ($w) {
+                        if ($w.word.toUpperCase() === words[i].toUpperCase()) {
+                            wasChecked_1 = true;
+                        }
+                    });
+                    if (wasChecked_1 === false) {
+                        var objectWord = new __WEBPACK_IMPORTED_MODULE_0__word_model__["a" /* Word */](words[i]);
+                        this_1.arrayObjectWord.push(objectWord);
+                    }
+                }
+                else {
+                    var objectWord = new __WEBPACK_IMPORTED_MODULE_0__word_model__["a" /* Word */](words[i]);
+                    this_1.arrayObjectWord.push(objectWord);
+                }
+            }
+        };
+        var this_1 = this;
+        for (var i = 0; i < words.length; i++) {
+            _loop_1(i);
+        }
+    };
+    Nlp.prototype.ranking = function (arrayObjectSentence) {
+        var ranking = arrayObjectSentence.sort(function (a, b) { return b.finalScore - a.finalScore; });
+        return ranking;
+    };
+    Nlp.prototype.summ = function (arrayObjectSentence, length) {
+        var _this = this;
+        var arraySentenceSumm = [];
+        for (var i = 0; i < length; i++) {
+            arraySentenceSumm.push(arrayObjectSentence[i]);
+        }
+        arraySentenceSumm = arraySentenceSumm.sort(function (a, b) { return a.index - b.index; });
+        arraySentenceSumm.forEach(function ($s) {
+            _this.textSummarizer += $s.sentence;
+        });
+    };
+    return Nlp;
+}());
+
+//# sourceMappingURL=nlp.js.map
 
 /***/ }),
 
@@ -247,11 +286,11 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(194);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(197);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(277);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(278);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_home_home__ = __webpack_require__(78);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_result_result__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_result_result__ = __webpack_require__(102);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_about_about__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_result_methodsSummarizer_nlp__ = __webpack_require__(280);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_result_methodsSummarizer_nlp__ = __webpack_require__(154);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -385,7 +424,7 @@ function frequenceText(arrayObjectWord, arrayObjectSentence) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = upperCase;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__stopWords__ = __webpack_require__(154);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__stopWords__ = __webpack_require__(79);
 
 function upperCase(arrayObjectSentence) {
     var numberCases = 0;
@@ -476,7 +515,62 @@ function IDF(objectWord, arrayObjectSentence) {
 
 /***/ }),
 
-/***/ 277:
+/***/ 252:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = titleResemblance;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__stopWords__ = __webpack_require__(79);
+
+function titleResemblance(title, arrayObjectSentence) {
+    title = Object(__WEBPACK_IMPORTED_MODULE_0__stopWords__["b" /* removeStopWords */])(title);
+    title = Object(__WEBPACK_IMPORTED_MODULE_0__stopWords__["a" /* removeHtmlXml */])(title);
+    var titleWords = title.match(/(\w|\s)*\w(?=")|[\w\u00C0-\u00FF]+/g);
+    for (var j = 0; j < arrayObjectSentence.length; j++) {
+        var wordsChecked = [];
+        var NTW = 0;
+        var _loop_1 = function (i) {
+            if (wordsChecked.length > 0) {
+                var isWordChecked_1 = false;
+                wordsChecked.forEach(function (word) {
+                    if (word.toUpperCase() === titleWords[i].toUpperCase()) {
+                        isWordChecked_1 = true;
+                    }
+                });
+                if (isWordChecked_1 == false) {
+                    var regex = new RegExp("\\b" + titleWords[i].toUpperCase() + "\\b", "g");
+                    if (arrayObjectSentence[j].sentence.toUpperCase().match(regex) !== null) {
+                        NTW++;
+                    }
+                    if (NTW > 0) {
+                        arrayObjectSentence[j].titleResemblance = NTW / titleWords.length;
+                        arrayObjectSentence[j].finalScore += NTW / titleWords.length;
+                    }
+                    wordsChecked.push(titleWords[i]);
+                }
+            }
+            else {
+                var regex = new RegExp("\\b" + titleWords[i].toUpperCase() + "\\b", "g");
+                if (arrayObjectSentence[j].sentence.toUpperCase().match(regex) !== null) {
+                    NTW++;
+                }
+                if (NTW > 0) {
+                    arrayObjectSentence[j].titleResemblance += NTW / titleWords.length;
+                    arrayObjectSentence[j].finalScore += NTW / titleWords.length;
+                }
+                wordsChecked.push(titleWords[i]);
+            }
+        };
+        for (var i = 0; i < titleWords.length; i++) {
+            _loop_1(i);
+        }
+    }
+}
+//# sourceMappingURL=titleResemblance.js.map
+
+/***/ }),
+
+/***/ 278:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -542,187 +636,6 @@ var MyApp = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 280:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Nlp; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__word_model__ = __webpack_require__(247);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__sentence_model__ = __webpack_require__(248);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__scripts_stopWords__ = __webpack_require__(154);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__scripts_wordFrequency__ = __webpack_require__(249);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__scripts_upperCase__ = __webpack_require__(250);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__scripts_TFIDF__ = __webpack_require__(251);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__scripts_titleResemblance__ = __webpack_require__(281);
-
-
-
-
-
-
-
-var Nlp = /** @class */ (function () {
-    function Nlp() {
-        this.sentence = "";
-        this.arrayObjectWord = [];
-        this.arrayObjectSentence = [];
-    }
-    // getters and setters 
-    Nlp.prototype.getText = function () { return this.text; };
-    Nlp.prototype.setText = function (newText) { this.text = newText; };
-    Nlp.prototype.getTitle = function () { return this.title; };
-    Nlp.prototype.setTitle = function (newTitle) { this.title = newTitle; };
-    Nlp.prototype.getTextSummarizer = function () { return this.textSummarizer; };
-    Nlp.prototype.setTextSummarizer = function (newText) { this.textSummarizer = newText; };
-    Nlp.prototype.getArrayObjectWord = function () { return this.arrayObjectWord; };
-    Nlp.prototype.eraseArrayObjectWord = function () { this.arrayObjectWord = []; };
-    Nlp.prototype.getArrayObjectSentence = function () { return this.arrayObjectSentence; };
-    Nlp.prototype.eraseArrayObjectSentence = function () { this.arrayObjectSentence = []; };
-    //constructor(text: string) { this.text = text }
-    //METHODS
-    // remove tags
-    Nlp.prototype.removeHtmlXml = function (string) {
-        string = Object(__WEBPACK_IMPORTED_MODULE_2__scripts_stopWords__["a" /* removeHtmlXml */])(string);
-        return string;
-    };
-    // this method remove all StopWords in text
-    Nlp.prototype.removeStopWords = function (string) {
-        string = Object(__WEBPACK_IMPORTED_MODULE_2__scripts_stopWords__["b" /* removeStopWords */])(string);
-        return string;
-    };
-    Nlp.prototype.frequenceText = function (arrayObjectWord, arrayObjectSentence) {
-        Object(__WEBPACK_IMPORTED_MODULE_3__scripts_wordFrequency__["a" /* frequenceText */])(arrayObjectWord, arrayObjectSentence);
-    };
-    Nlp.prototype.upperCase = function (arrayObjectSentence) {
-        Object(__WEBPACK_IMPORTED_MODULE_4__scripts_upperCase__["a" /* upperCase */])(arrayObjectSentence);
-    };
-    Nlp.prototype.TFIDF = function (arrayObjectWord, arrayObjectSentence) {
-        Object(__WEBPACK_IMPORTED_MODULE_5__scripts_TFIDF__["a" /* TFIDF */])(arrayObjectWord, arrayObjectSentence);
-    };
-    Nlp.prototype.titleResemblance = function (title, arrayObjectSentence) {
-        Object(__WEBPACK_IMPORTED_MODULE_6__scripts_titleResemblance__["a" /* titleResemblance */])(title, arrayObjectSentence);
-    };
-    //split text in sentences and create objectSentence
-    Nlp.prototype.splitText = function (string) {
-        var indexSentence = 0;
-        for (var i = 0; i < string.length; i++) {
-            this.sentence += string[i];
-            if (string[i] == "." || string[i] == "?") {
-                if ('0123456789'.indexOf(string[i + 1]) == -1) {
-                    indexSentence++; //
-                    if (string[i + 1] == "." && string[i + 2] == ".") {
-                        this.sentence += string[i + 1];
-                        this.sentence += string[i + 2];
-                        var objectSentence = new __WEBPACK_IMPORTED_MODULE_1__sentence_model__["a" /* Sentence */](this.sentence, indexSentence);
-                        this.arrayObjectSentence.push(objectSentence);
-                        this.sentence = "";
-                        i += 2;
-                    }
-                    else {
-                        var objectSentence = new __WEBPACK_IMPORTED_MODULE_1__sentence_model__["a" /* Sentence */](this.sentence, indexSentence);
-                        this.arrayObjectSentence.push(objectSentence);
-                        this.sentence = "";
-                    }
-                }
-            }
-        }
-    };
-    //Create objectWord
-    Nlp.prototype.createObjectWord = function () {
-        var words = this.text.match(/(\w|\s)*\w(?=")|[\w\u00C0-\u00FF]+/ig); //get all elements in text
-        var isWord = new RegExp(/[\w\u00C0-\u00FF]/ig);
-        var _loop_1 = function (i) {
-            //these conditions checks if the element in array is a word and stop word
-            if (Object(__WEBPACK_IMPORTED_MODULE_2__scripts_stopWords__["b" /* removeStopWords */])(words[i]) /*&& words[i].match(isWord)*/) {
-                if (this_1.arrayObjectWord.length > 0) {
-                    var wasChecked_1 = false;
-                    this_1.arrayObjectWord.forEach(function ($w) {
-                        if ($w.word.toUpperCase() === words[i].toUpperCase()) {
-                            wasChecked_1 = true;
-                        }
-                    });
-                    if (wasChecked_1 === false) {
-                        var objectWord = new __WEBPACK_IMPORTED_MODULE_0__word_model__["a" /* Word */](words[i]);
-                        this_1.arrayObjectWord.push(objectWord);
-                    }
-                }
-                else {
-                    var objectWord = new __WEBPACK_IMPORTED_MODULE_0__word_model__["a" /* Word */](words[i]);
-                    this_1.arrayObjectWord.push(objectWord);
-                }
-            }
-        };
-        var this_1 = this;
-        for (var i = 0; i < words.length; i++) {
-            _loop_1(i);
-        }
-    };
-    return Nlp;
-}());
-
-//# sourceMappingURL=nlp.js.map
-
-/***/ }),
-
-/***/ 281:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = titleResemblance;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__stopWords__ = __webpack_require__(154);
-
-function titleResemblance(title, arrayObjectSentence) {
-    title = Object(__WEBPACK_IMPORTED_MODULE_0__stopWords__["b" /* removeStopWords */])(title);
-    title = Object(__WEBPACK_IMPORTED_MODULE_0__stopWords__["a" /* removeHtmlXml */])(title);
-    var titleWords = title.match(/(\w|\s)*\w(?=")|[\w\u00C0-\u00FF]+/g);
-    for (var j = 0; j < arrayObjectSentence.length; j++) {
-        var wordsChecked = [];
-        var NTW = 0;
-        var _loop_1 = function (i) {
-            if (wordsChecked.length > 0) {
-                var isWordChecked_1 = false;
-                wordsChecked.forEach(function (word) {
-                    if (word.toUpperCase() === titleWords[i].toUpperCase()) {
-                        isWordChecked_1 = true;
-                    }
-                });
-                if (isWordChecked_1 == false) {
-                    var regex = new RegExp("\\b" + titleWords[i].toUpperCase() + "\\b", "g");
-                    if (arrayObjectSentence[j].sentence.toUpperCase().match(regex) !== null) {
-                        NTW++;
-                    }
-                    if (NTW > 0) {
-                        alert(NTW);
-                        alert(titleWords.length + "title length");
-                        arrayObjectSentence[j].titleResemblance += NTW / titleWords.length;
-                        arrayObjectSentence[j].finalScore += NTW / titleWords.length;
-                    }
-                    wordsChecked.push(titleWords[i]);
-                }
-            }
-            else {
-                var regex = new RegExp("\\b" + titleWords[i].toUpperCase() + "\\b", "g");
-                if (arrayObjectSentence[j].sentence.toUpperCase().match(regex) !== null) {
-                    NTW++;
-                }
-                if (NTW > 0) {
-                    alert(NTW);
-                    alert(titleWords.length + "title length");
-                    arrayObjectSentence[j].titleResemblance += NTW / titleWords.length;
-                    arrayObjectSentence[j].finalScore += NTW / titleWords.length;
-                }
-                wordsChecked.push(titleWords[i]);
-            }
-        };
-        for (var i = 0; i < titleWords.length; i++) {
-            _loop_1(i);
-        }
-    }
-}
-//# sourceMappingURL=titleResemblance.js.map
-
-/***/ }),
-
 /***/ 50:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -775,7 +688,7 @@ var AboutPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__result_result__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__result_result__ = __webpack_require__(102);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__about_about__ = __webpack_require__(50);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -835,14 +748,113 @@ var HomePage = /** @class */ (function () {
     ], HomePage.prototype, "onInput", null);
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"C:\Apps\IonicHybridSumm\HybridSumm1.1\HybridSum1.1\HybridSumm\src\pages\home\home.html"*/'<br>\n\n<ion-header>\n\n  <ion-navbar>\n\n\n\n    <ion-title>\n\n      Menu\n\n    </ion-title>\n\n\n\n    <ion-buttons start>\n\n      <button ion-button icon-only menuToggle="left">\n\n        <ion-icon name="menu"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n\n\n  <form [formGroup]="summForm" novalidate (submit)="nextPageWithData()">\n\n\n\n  <ion-item>\n\n    <ion-label stacked class="label-md-dark">Title</ion-label>\n\n    <ion-input placeholder="Ex: The Bio-informatics" formControlName="sTitle" ></ion-input>\n\n  </ion-item>\n\n\n\n  <p *ngIf="sTitle.hasError(\'required\') && sTitle.touched" class="erro">You must enter a title to summarize.</p>\n\n\n\n\n\n  <ion-item>\n\n    <ion-label stacked >Text</ion-label>\n\n    <ion-textarea placeholder="Place the text that you want to summarize." formControlName="sText" class="texto"></ion-textarea>\n\n  </ion-item>\n\n\n\n  <p *ngIf="sText.hasError(\'required\') && sText.touched" class="erro">You must enter a text to summarize.</p>\n\n\n\n  <ion-item>\n\n    <ion-label stacked>Sentence Length</ion-label>\n\n    <ion-input type="number" formControlName="sLength"></ion-input>\n\n  </ion-item>\n\n\n\n  <p *ngIf="sLength.hasError(\'required\') && sLength.touched" class="erro">You must enter the sentence length to summarize.</p>\n\n\n\n  <br>\n\n\n\n  <button ion-button outline class="btn" type="submit" [disabled]="!summForm.valid">Summarize</button>\n\n  <button ion-button outline class="btn">Reset text</button>\n\n\n\n  </form>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Apps\IonicHybridSumm\HybridSumm1.1\HybridSum1.1\HybridSumm\src\pages\home\home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"C:\Apps\IonicHybridSumm\HybridSumm1.1\HybridSum1.1\HybridSumm\src\pages\home\home.html"*/'<br>\n\n<ion-header>\n\n  <ion-navbar>\n\n\n\n    <ion-title>\n\n      Menu\n\n    </ion-title>\n\n\n\n    <ion-buttons start>\n\n      <button ion-button icon-only menuToggle="left">\n\n        <ion-icon name="menu"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n\n\n  <form [formGroup]="summForm" novalidate (submit)="nextPageWithData()">\n\n\n\n  <ion-item>\n\n    <ion-label stacked class="label-md-dark">Title</ion-label>\n\n    <ion-input placeholder="Ex: The Bio-informatics" formControlName="sTitle" ></ion-input>\n\n  </ion-item>\n\n\n\n  <p *ngIf="sTitle.hasError(\'required\') && sTitle.touched" class="erro">You must enter a title to summarize.</p>\n\n\n\n\n\n  <ion-item>\n\n    <ion-label stacked >Text</ion-label>\n\n    <ion-textarea placeholder="Place the text that you want to summarize." formControlName="sText" class="texto"></ion-textarea>\n\n  </ion-item>\n\n\n\n  <p *ngIf="sText.hasError(\'required\') && sText.touched" class="erro">You must enter a text to summarize.</p>\n\n\n\n  <ion-item>\n\n    <ion-label stacked>Sentence Length</ion-label>\n\n    <ion-input type="number" formControlName="sLength"></ion-input>\n\n  </ion-item>\n\n\n\n  <p *ngIf="sLength.hasError(\'required\') && sLength.touched" class="erro">You must enter the sentence length to summarize.</p>\n\n\n\n  <br>\n\n\n\n  <button ion-button outline class="btn" type="submit" [disabled]="!summForm.valid">Summarize</button>\n\n  <button ion-button outline class="btn">Reset text</button>\n\n\n\n  </form>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Apps\IonicHybridSumm\HybridSumm1.1\HybridSum1.1\HybridSumm\src\pages\home\home.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* MenuController */], __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* MenuController */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]])
     ], HomePage);
     return HomePage;
 }());
 
 //# sourceMappingURL=home.js.map
+
+/***/ }),
+
+/***/ 79:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = removeHtmlXml;
+/* harmony export (immutable) */ __webpack_exports__["b"] = removeStopWords;
+function removeHtmlXml(texto) {
+    var regex = /(<([^>]+)>)/ig;
+    var result = texto.replace(regex, "");
+    return result;
+}
+function isStopWord(word) {
+    var regex = new RegExp("\\b" + word + "\\b", "i");
+    if (stopWords.search(regex) < 0) {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+function removeStopWords(string) {
+    var words = new Array();
+    string.replace(/\b[\w\u00C0-\u00FF]+\b/ig, function ($0) {
+        if (!isStopWord($0)) {
+            words[words.length] = $0.trim();
+        }
+    });
+    return words.join(" "); // Retorna o texto sem stopwords
+}
+var stopWords = "a,able,about,above,abst,accordance,according,accordingly,across,act,actually,added,adj,\
+affected,affecting,affects,after,afterwards,again,against,ah,all,almost,alone,along,already,also,although,\
+always,am,among,amongst,an,and,announce,another,any,anybody,anyhow,anymore,anyone,anything,anyway,anyways,\
+anywhere,apparently,approximately,are,aren,arent,arise,around,as,aside,ask,asking,at,auth,available,away,awfully,\
+b,back,be,became,because,become,becomes,becoming,been,before,beforehand,begin,beginning,beginnings,begins,behind,\
+being,believe,below,beside,besides,between,beyond,biol,both,brief,briefly,but,by,c,ca,came,can,cannot,can't,cause,causes,\
+certain,certainly,co,com,come,comes,contain,containing,contains,could,couldnt,d,date,did,didn't,different,do,does,doesn't,\
+doing,done,don't,down,downwards,due,during,e,each,ed,edu,effect,eg,eight,eighty,either,else,elsewhere,end,ending,enough,\
+especially,et,et-al,etc,even,ever,every,everybody,everyone,everything,everywhere,ex,except,f,far,few,ff,fifth,first,five,fix,\
+followed,following,follows,for,former,formerly,forth,found,four,from,further,furthermore,g,gave,get,gets,getting,give,given,gives,\
+giving,go,goes,gone,got,gotten,h,had,happens,hardly,has,hasn't,have,haven't,having,he,hed,hence,her,here,hereafter,hereby,herein,\
+heres,hereupon,hers,herself,hes,hi,hid,him,himself,his,hither,home,how,howbeit,however,hundred,i,id,ie,if,i'll,im,immediate,\
+immediately,importance,important,in,inc,indeed,index,information,instead,into,invention,inward,is,isn't,it,itd,it'll,its,itself,\
+i've,j,just,k,keep,keeps,kept,kg,km,know,known,knows,l,largely,last,lately,later,latter,latterly,least,less,lest,let,lets,like,\
+liked,likely,line,little,'ll,look,looking,looks,ltd,m,made,mainly,make,makes,many,may,maybe,me,mean,means,meantime,meanwhile,\
+merely,mg,might,million,miss,ml,more,moreover,most,mostly,mr,mrs,much,mug,must,my,myself,n,na,name,namely,nay,nd,near,nearly,\
+necessarily,necessary,need,needs,neither,never,nevertheless,new,next,nine,ninety,no,nobody,non,none,nonetheless,noone,nor,\
+normally,nos,not,noted,nothing,now,nowhere,o,obtain,obtained,obviously,of,off,often,oh,ok,okay,old,omitted,on,once,one,ones,\
+only,onto,or,ord,other,others,otherwise,ought,our,ours,ourselves,out,outside,over,overall,owing,own,p,page,pages,part,\
+particular,particularly,past,per,perhaps,placed,please,plus,poorly,possible,possibly,potentially,pp,predominantly,present,\
+previously,primarily,probably,promptly,proud,provides,put,q,que,quickly,quite,qv,r,ran,rather,rd,re,readily,really,recent,\
+recently,ref,refs,regarding,regardless,regards,related,relatively,research,respectively,resulted,resulting,results,right,run,s,\
+said,same,saw,say,saying,says,sec,section,see,seeing,seem,seemed,seeming,seems,seen,self,selves,sent,seven,several,shall,she,shed,\
+she'll,shes,should,shouldn't,show,showed,shown,showns,shows,significant,significantly,similar,similarly,since,six,slightly,so,\
+some,somebody,somehow,someone,somethan,something,sometime,sometimes,somewhat,somewhere,soon,sorry,specifically,specified,specify,\
+specifying,still,stop,strongly,sub,substantially,successfully,such,sufficiently,suggest,sup,sure,t,take,taken,taking,tell,tends,\
+th,than,thank,thanks,thanx,that,that'll,thats,that've,the,their,theirs,them,themselves,then,thence,there,thereafter,thereby,\
+thered,therefore,therein,there'll,thereof,therere,theres,thereto,thereupon,there've,these,they,theyd,they'll,theyre,they've,\
+think,this,those,thou,though,thoughh,thousand,throug,through,throughout,thru,thus,til,tip,to,together,too,took,toward,towards,\
+tried,tries,truly,try,trying,ts,twice,two,u,un,under,unfortunately,unless,unlike,unlikely,until,unto,up,upon,ups,us,use,used,\
+useful,usefully,usefulness,uses,using,usually,v,value,various,'ve,very,via,viz,vol,vols,vs,w,want,wants,was,wasn't,way,we,wed,\
+welcome,we'll,went,were,weren't,we've,what,whatever,what'll,whats,when,whence,whenever,where,whereafter,whereas,whereby,wherein,\
+wheres,whereupon,wherever,whether,which,while,whim,whither,who,whod,whoever,whole,who'll,whom,whomever,whos,whose,why,widely,\
+willing,wish,with,within,without,won't,words,world,would,wouldn't,www,x,y,yes,yet,you,youd,you'll,your,youre,yours,yourself,\
+yourselves,you've,z,zero,a,à,adeus,agora,aí,ainda,além,algo,algumas,alguns,ali,ano,anos,antes,ao,aos,apenas,apoio,após,aquela,aquelas,aquele,aqueles,\ aqui,aquilo,área,as,às,assim,até,atrás,através,baixo,bastante,bem,boa,boas,bom,bons,breve,cá,cada,catorze,cedo,cento,certamente,certeza,cima,\
+cinco,coisa,com,como,conselho,contra,custa,da,dá,dão,daquela,daquelas,daquele,daqueles,dar,das,de,debaixo,demais,dentro,depois,desde,dessa,\
+dessas,desse,desses,desta,destas,deste,destes,deve,deverá,dez,dezanove,dezasseis,dezassete,dezoito,dia,diante,diz,dizem,dizer,do,dois,dos,\
+doze,duas,dúvida,e,é,ela,elas,ele,eles,em,embora,entre,era,és,essa,essas,esse,esses,esta,está,estão,estar,estas,estás,estava,este,estes,esteve,\
+estive,estivemos,estiveram,estiveste,estivestes,estou,eu,exemplo,faço,falta,favor,faz,fazeis,fazem,fazemos,fazer,fazes,fez,fim,final,foi,fomos,\
+for,foram,forma,foste,fostes,fui,geral,grande,grandes,grupo,há,hoje,hora,horas,isso,isto,já,lá,lado,local,logo,longe,lugar,maior,maioria,mais,mal,\
+mas,máximo,me,meio,menor,menos,mês,meses,meu,meus,mil,minha,minhas,momento,muito,muitos,na,nada,não,naquela,naquelas,naquele,naqueles,nas,nem,nenhuma,\
+nessa,nessas,nesse,nesses,nesta,nestas,neste,nestes,nível,no,noite,nome,nos,nós,nossa,nossas,nosso,nossos,nova,novas,nove,novo,novos,num,numa,\
+número,nunca,o,obra,obrigada,obrigado,oitava,oitavo,oito,onde,ontem,onze,os,ou,outra,outras,outro,outros,para,parece,parte,partir,paucas,pela,\
+pelas,pelo,pelos,perto,pode,pôde,podem,poder,põe,põem,ponto,pontos,por,porque,porquê,posição,possível,possivelmente,posso,pouca,pouco,poucos,\
+primeira,primeiras,primeiro,primeiros,própria,próprias,próprio,próprios,próxima,próximas,próximo,próximos,puderam,quáis,qual,quando,quanto,quarta,\
+quarto,quatro,que,quê,quem,quer,quereis,querem,queremas,queres,quero,questão,quinta,quinto,quinze,relação,sabe,sabem,são,se,segunda,segundo,sei,\
+seis,sem,sempre,ser,seria,sete,sétima,sétimo,seu,seus,sexta,sexto,sim,sistema,sob,sobre,sois,somos,sou,sua,suas,tal,talvez,também,tanta,tantas,\
+tanto,tão,tarde,te,tem,têm,temos,tendes,tenho,tens,ter,terceira,terceiro,teu,teus,teve,tive,tivemos,tiveram,tiveste,tivestes,toda,todas,todo,\
+todos,trabalho,três,treze,tu,tua,tuas,tudo,um,uma,umas,uns,vai,vais,vão,vários,vem,vêm,vens,ver,vez,vezes,viagem,vindo,vinte,você,vocês,vos,vós,\
+vossa,vossas,vosso,vossos,él,ésta,éstas,éste,éstos,última,últimas,último,últimos,a,añadió,aún,actualmente,adelante,además,afirmó,agregó,ahí,\
+ahora,al,algún,algo,alguna,algunas,alguno,algunos,alrededor,ambos,ante,anterior,antes,apenas,aproximadamente,aquí,así,aseguró,aunque,ayer,bajo,\
+bien,buen,buena,buenas,bueno,buenos,cómo,cada,casi,cerca,cierto,cinco,comentó,como,con,conocer,consideró,considera,contra,cosas,creo,cual,cuales,\
+cualquier,cuando,cuanto,cuatro,cuenta,da,dado,dan,dar,de,debe,deben,debido,decir,dejó,del,demás,dentro,desde,después,dice,dicen,dicho,dieron,\
+diferente,diferentes,dijeron,dijo,dio,donde,dos,durante,e,ejemplo,el,ella,ellas,ello,ellos,embargo,en,encuentra,entonces,entre,era,eran,es,esa,\
+esas,ese,eso,esos,está,están,esta,estaba,estaban,estamos,estar,estará,estas,este,esto,estos,estoy,estuvo,ex,existe,existen,explicó,expresó,fin,\
+fue,fuera,fueron,gran,grandes,ha,había,habían,haber,habrá,hace,hacen,hacer,hacerlo,hacia,haciendo,han,hasta,hay,haya,he,hecho,hemos,hicieron,hizo,\
+hoy,hubo,igual,incluso,indicó,informó,junto,la,lado,las,le,les,llegó,lleva,llevar,lo,los,luego,lugar,más,manera,manifestó,mayor,me,mediante,mejor,\
+mencionó,menos,mi,mientras,misma,mismas,mismo,mismos,momento,mucha,muchas,mucho,muchos,muy,nada,nadie,ni,ningún,ninguna,ningunas,ninguno,ninguno,no,\
+nos,nosotras,nosotros,nuestra,nuestras,nuestro,nuestros,nueva,nuevas,nuevo,nuevos,nunca,o,ocho,otra,otras,otro,otros,para,parece,parte,partir,pasada,\
+pasado,pero,pesar,poca,pocas,poco,pocos,podemos,podrá,podrán,podría,podrían,poner,por,porque,posible,próximo,próximos,primer,primera,primero,primeros,\
+principalmente,propia,propias,propio,propios,pudo,pueda,puede,pueden,pues,qué,que,quedó,queremos,quién,quien,quienes,quiere,realizó,realizado,\
+realizar,respecto,sí,sólo,se,señaló,sea,sean,según,segunda,segundo,seis,ser,será,serán,sería,si,sido,siempre,siendo,siete,sigue,siguiente,sin,\
+sino,sobre,sola,solamente,solas,solo,solos,son,su,sus,tal,también,tampoco,tan,tanto,tenía,tendrá,tendrán,tenemos,tener,tenga,tengo,tenido,tercera,\
+tiene,tienen,toda,todas,todavía,todo,todos,total,tras,trata,través,tres,tuvo,un,una,unas,uno,unos,usted,va,vamos,van,varias,varios,veces,\
+ver,vez,y,ya,yo";
+//# sourceMappingURL=stopWords.js.map
 
 /***/ })
 
