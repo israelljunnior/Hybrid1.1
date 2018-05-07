@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ResultPage} from '../result/result';
 import { MenuController} from 'ionic-angular';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Directive, HostListener, ElementRef } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HostListener, ElementRef } from '@angular/core';
 
 
 import {AboutPage} from '../about/about';

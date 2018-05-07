@@ -19,7 +19,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public menuCtrl:MenuController) {
+  constructor(public platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public menuCtrl:MenuController) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -35,8 +35,8 @@ export class MyApp {
     this.menuCtrl.open();
   }
 
-  closeMenu() {
-    this.menuCtrl.close();
+  closeApp() {
+    this.platform.exitApp();
   }
 
   toggleMenu() {

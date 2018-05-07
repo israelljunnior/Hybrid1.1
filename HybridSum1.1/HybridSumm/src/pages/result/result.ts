@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HomePage } from '../home/home';
+// import { HomePage } from '../home/home';
 import { Nlp } from './methodsSummarizer/nlp';
 
 /**
@@ -34,7 +34,7 @@ export class ResultPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ResultPage');
+    console.log('Summary Text Sucess.');
     this.nlp.eraseArrayObjectSentence()
     this.nlp.eraseArrayObjectWord()
     this.nlp.nlp(this.resultSumm.sTitle, this.resultSumm.sText, this.resultSumm.sLength)
@@ -42,7 +42,7 @@ export class ResultPage {
   }
 
   goBack(){
-    this.navCtrl.push(HomePage);
+    this.navCtrl.pop();
   }
 
 }
