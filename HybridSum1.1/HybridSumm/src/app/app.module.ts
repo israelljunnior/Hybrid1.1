@@ -9,7 +9,8 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ResultPage } from '../pages/result/result';
 import { AboutPage } from '../pages/about/about';
-import { Nlp } from '../pages/result/methodsSummarizer/nlp';
+import { Nlp } from '../pages/home/methodsSummarizer/nlp';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { Nlp } from '../pages/result/methodsSummarizer/nlp';
     BrowserModule,
     FormsModule,
     IonicModule.forRoot(MyApp),
+    HttpClientModule
     
     
     

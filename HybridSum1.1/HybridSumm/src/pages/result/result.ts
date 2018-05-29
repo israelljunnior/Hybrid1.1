@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 // import { HomePage } from '../home/home';
-import { Nlp } from './methodsSummarizer/nlp';
 
+import observable from 'rxjs/observable'
 /**
  * Generated class for the ResultPage page.
  *
@@ -14,31 +14,25 @@ import { Nlp } from './methodsSummarizer/nlp';
 @Component({
   selector: 'page-result',
   templateUrl: 'result.html',
-  providers:[Nlp]
 })
 export class ResultPage {
 
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, public nlp: Nlp) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
    
     
   }
 
-   
-  
-
   resultSumm = {    
     sTitle: this.navParams.get('paramTitle'),
     sText: this.navParams.get('paramText'),
-    sLength: this.navParams.get('paramLength')
+    sLength: this.navParams.get('paramLength'),
+    
   }
 
   ionViewDidLoad() {
-    console.log('Summary Text Sucess.');
-    this.nlp.eraseArrayObjectSentence()
-    this.nlp.eraseArrayObjectWord()
-    this.nlp.nlp(this.resultSumm.sTitle, this.resultSumm.sText, this.resultSumm.sLength)
-    this.resultSumm.sText= this.nlp.getTextSummarizer()
+
   }
 
   goBack(){
