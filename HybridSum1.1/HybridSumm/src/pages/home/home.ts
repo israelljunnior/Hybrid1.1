@@ -13,7 +13,7 @@ import {AboutPage} from '../about/about';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
-  providers:[Nlp, GoogleService]
+  providers:[Nlp, GoogleService, GoogleObj]
   
 })
 
@@ -28,7 +28,6 @@ export class HomePage {
   sLanguage: string = ""
 
   public googleObj: GoogleObj = new GoogleObj();
-  public key: string = "AIzaSyDayupNAHot4Rst1q2lMuzvqB_W3He33j4";
   public textTranslated: boolean = false;
 
   @HostListener("input",["$event.target"])
@@ -66,39 +65,39 @@ export class HomePage {
     var resultText = this.sText.value;
     var resultTitle = this.sTitle.value;
     var resultLength = this.sLength.value;
+
     this.googleObj.q = resultText;
-    this._google.detect(this.googleObj, this.key).subscribe(
+    this._google.detect(this.googleObj).subscribe(
       (res: any) => {
         let jsonObj: any[] = res.data.detections[0];
         if(jsonObj[0].confidence >= 0.4) {
         this.sLanguage = jsonObj[0].language;
 
         if(this.sLanguage == "en" ||
-        this.sLanguage == "pt" ||
-        this.sLanguage == "es"){
-          console.log("it doesn't need to be translated")
-          this.nlp.eraseArrayObjectSentence()
-        this.nlp.eraseArrayObjectWord()
-        this.nlp.nlp(resultTitle, resultText, resultLength)
-        resultText = this.nlp.getTextSummarizer()
-        this.navCtrl.push(ResultPage,{
-          paramTitle: resultTitle,
-          paramText: resultText,
-          paramLength: resultLength
-        })
+          this.sLanguage == "pt" ||
+          this.sLanguage == "es"){
+            console.log("it doesn't need to be translated")
+            this.nlp.eraseArrayObjectSentence()
+            this.nlp.eraseArrayObjectWord()
+            this.nlp.nlp(resultTitle, resultText, resultLength)
+            resultText = this.nlp.getTextSummarizer()
+            this.navCtrl.push(ResultPage,{
+              paramTitle: resultTitle,
+              paramText: resultText,
+              paramLength: resultLength,
+              paramLanguage: this.sLanguage
+          })
         
-        }
-
-      else {
+        } else {
         
         this.googleObj.source = this.sLanguage
-        this._google.translate(this.googleObj, this.key).subscribe(
+        this._google.translate(this.googleObj).subscribe(
         (res: any) => {
 
           resultText = res.data.translations[0].translatedText;
           this.textTranslated = true
           this.googleObj.q = resultTitle
-          this._google.translate(this.googleObj, this.key).subscribe(
+          this._google.translate(this.googleObj).subscribe(
             (res: any) => {
               resultTitle = res.data.translations[0].translatedText;
     
@@ -113,18 +112,19 @@ export class HomePage {
                 this.googleObj.q = resultText
                 this.googleObj.target = this.sLanguage
                 this.googleObj.source = "en"
-                this._google.translate(this.googleObj, this.key).subscribe(
+                this._google.translate(this.googleObj).subscribe(
                 (res: any) => {
                   resultText = res.data.translations[0].translatedText;
                   console.log(resultText)
                   this.googleObj.q = resultTitle
-                  this._google.translate(this.googleObj, this.key).subscribe(
+                  this._google.translate(this.googleObj).subscribe(
                     (res: any) => {
                       resultTitle = res.data.translations[0].translatedText;
                       this.navCtrl.push(ResultPage,{
                         paramTitle: resultTitle,
                         paramText: resultText,
-                        paramLength: resultLength
+                        paramLength: resultLength,
+                        paramLanguage: this.sLanguage
                       })
                     },
                     err => {

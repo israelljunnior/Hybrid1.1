@@ -3,14 +3,17 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class GoogleService {
+
+  public key: string = "AIzaSyDayupNAHot4Rst1q2lMuzvqB_W3He33j4";
+  
   constructor(private _http: HttpClient) {}
 
-  translate(obj: GoogleObj, key: string) {
-    return this._http.post(url + key, obj);
+  translate(obj: GoogleObj) {
+    return this._http.post(url + this.key, obj);
   }
 
-  detect(obj: GoogleObj, key: string) {
-    return this._http.post(urlDetect + key, obj);
+  detect(obj: GoogleObj) {
+    return this._http.post(urlDetect + this.key, obj);
   }
   
   

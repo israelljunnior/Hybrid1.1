@@ -105,6 +105,7 @@ ver,vez,y,ya,yo";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ResultPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_translate_google_services__ = __webpack_require__(156);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -116,6 +117,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+// import { HomePage } from '../home/home';
+
 /**
  * Generated class for the ResultPage page.
  *
@@ -123,27 +126,162 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var ResultPage = /** @class */ (function () {
-    function ResultPage(navCtrl, navParams) {
+    function ResultPage(navCtrl, navParams, _google, googleObj) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this._google = _google;
+        this.googleObj = googleObj;
         this.resultSumm = {
             sTitle: this.navParams.get('paramTitle'),
             sText: this.navParams.get('paramText'),
             sLength: this.navParams.get('paramLength'),
+            sLanguage: this.navParams.get('paramLanguage')
         };
+        this.languageAvaible = [
+            { language: "Afrikaans", initials: "af" },
+            { language: "Albanian", initials: "sq" },
+            { language: "Amharic", initials: "am" },
+            { language: "Arabic", initials: "ar" },
+            { language: "Armenian", initials: "hy" },
+            { language: "Azerbaijani", initials: "az" },
+            { language: "Basque", initials: "I" },
+            { language: "Belarusian", initials: "be" },
+            { language: "Bengali", initials: "bn" },
+            { language: "Bosnian", initials: "bs" },
+            { language: "Bulgarian", initials: "bg" },
+            { language: "Catalan", initials: "ca" },
+            { language: "Cebuano", initials: "ceb" },
+            { language: "Simplified Chinese", initials: "zh-CN" },
+            { language: "Traditional Chines", initials: "zh-TW" },
+            { language: "Corsican", initials: "co" },
+            { language: "Croatian", initials: "hr" },
+            { language: "Czech", initials: "cs" },
+            { language: "Danish", initials: "da" },
+            { language: "Dutch", initials: "nl" },
+            { language: "English", initials: "en" },
+            { language: "Esperanto", initials: "eo" },
+            { language: "Estonian", initials: "et" },
+            { language: "Finnish ", initials: "fi" },
+            { language: "French", initials: "fr" },
+            { language: "Frisian", initials: "fy" },
+            { language: "Galician", initials: "gl" },
+            { language: "Georgian", initials: "Ka" },
+            { language: "German", initials: "in" },
+            { language: "Greek", initials: "he" },
+            { language: "Gujarat", initials: "gu" },
+            { language: "Haitian Creole", initials: "ht" },
+            { language: "Hauza", initials: "ha" },
+            { language: "Hawaiian haw", initials: "haw" },
+            { language: "Hebrew", initials: "iw" },
+            { language: "Hindi", initials: "hi" },
+            { language: "Hmong", initials: "hmn" },
+            { language: "Hungarian", initials: "hu" },
+            { language: "Icelandi", initials: "is" },
+            { language: "Igbo", initials: "IG" },
+            { language: "Indonesian", initials: "id" },
+            { language: "Irish", initials: "ga" },
+            { language: "Italian", initials: "it" },
+            { language: "Japanese", initials: "ja" },
+            { language: "Javanese", initials: "jw" },
+            { language: "Canara", initials: "kn" },
+            { language: "Kazakh", initials: "kk" },
+            { language: "Khmer", initials: "km" },
+            { language: "Korean", initials: "ko" },
+            { language: "Kurdish", initials: "ku" },
+            { language: "Kyrgyz", initials: "ky" },
+            { language: "Laothian", initials: "it" },
+            { language: "Latin", initials: "la" },
+            { language: "Latvian", initials: "lv" },
+            { language: "Lithuanian", initials: "lt" },
+            { language: "Luxembourgish", initials: "lb" },
+            { language: "Macedonian", initials: "mk" },
+            { language: "Malagasy", initials: "mg" },
+            { language: "Malay", initials: "ms" },
+            { language: "Malayalam", initials: "ml" },
+            { language: "Maltese", initials: "mt" },
+            { language: "Maori", initials: "mi" },
+            { language: "Marati", initials: "mr" },
+            { language: "Mongolian", initials: "mn" },
+            { language: "Myanmar (Burmese)", initials: "my" },
+            { language: "Nepali", initials: "hu" },
+            { language: "Norwegian", initials: "no" },
+            { language: "Nianja (Chichewa)", initials: "ny" },
+            { language: "Pashto", initials: "ps" },
+            { language: "Persian", initials: "fa" },
+            { language: "Polish", initials: "pl" },
+            { language: "English", initials: "en" },
+            { language: "Punjabi", initials: "Pa" },
+            { language: "Romanian", initials: "ro" },
+            { language: "Russian", initials: "ru" },
+            { language: "Samoan", initials: "sm" },
+            { language: "Scottish Gdaelic", initials: "gd" },
+            { language: "Serbian", initials: "sr" },
+            { language: "Sesoto", initials: "st" },
+            { language: "Xona", initials: "sn" },
+            { language: "Sindi", initials: "sd" },
+            { language: "Sinhala (Sinhala)", initials: "si" },
+            { language: "Slovak", initials: "sk" },
+            { language: "Slovenian", initials: "sl" },
+            { language: "Somali", initials: "so" },
+            { language: "Spanish", initials: "es" },
+            { language: "Sundanese", initials: "su" },
+            { language: "Swahili", initials: "sw" },
+            { language: "Swedish", initials: "sv" },
+            { language: "Tagalog (Filipino)", initials: "tl" },
+            { language: "Tajik", initials: "tg" },
+            { language: "Tamil", initials: "ta" },
+            { language: "Telugu", initials: "te" },
+            { language: "Thai", initials: "th" },
+            { language: "Turkish", initials: "tr" },
+            { language: "Ukrainian", initials: "uk" },
+            { language: "Urdu", initials: "ur" },
+            { language: "Uzbek", initials: "uz" },
+            { language: "Vietnamese", initials: "vi" },
+            { language: "Welsh", initials: "cy" },
+            { language: "Xhosa", initials: "xh" },
+            { language: "Yiddish", initials: "yi" },
+            { language: "Yoruba", initials: "yo" },
+            { language: "Zulu", initials: "zu" },
+        ];
     }
+    ResultPage.prototype.translate = function ($event) {
+        var _this = this;
+        var language = $event;
+        this.googleObj.q = this.resultSumm.sText;
+        this.googleObj.source = this.resultSumm.sLanguage;
+        this.googleObj.target = language;
+        this._google.translate(this.googleObj).subscribe(function (res) {
+            var translatedText = res.data.translations[0].translatedText;
+            _this.googleObj.q = _this.resultSumm.sTitle;
+            _this._google.translate(_this.googleObj).subscribe(function (res) {
+                _this.resultSumm.sTitle = res.data.translations[0].translatedText;
+                _this.resultSumm.sText = translatedText;
+                _this.resultSumm.sLanguage = _this.googleObj.target;
+            }, function (err) {
+                console.log(err);
+            });
+        }, function (err) {
+            console.log(err);
+        });
+    };
     ResultPage.prototype.ionViewDidLoad = function () {
     };
     ResultPage.prototype.goBack = function () {
         this.navCtrl.pop();
     };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", String)
+    ], ResultPage.prototype, "languageToTranslate", void 0);
     ResultPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-result',template:/*ion-inline-start:"C:\Apps\HybridSum\HybridSum1.1\HybridSumm\HybridSumm1.1\HybridSum1.1\HybridSumm\src\pages\result\result.html"*/'<!--\n\n  Generated template for the ResultPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar hideBackButton>\n\n    <ion-title>\n\n      Summary Result\n\n    </ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <ion-card>\n\n\n\n\n\n    <ion-card-content>\n\n      <b>Title:</b><br><br>{{resultSumm.sTitle}}<br>\n\n      <div class="hr"></div>\n\n      <b>Summary Output:</b><br><br>{{resultSumm.sText}}\n\n    </ion-card-content>\n\n\n\n  </ion-card>\n\n  <br>\n\n\n\n  <div *ngIf="resultSumm.sText">\n\n    <button ion-button outline class="btn">Translate Summary</button>\n\n    <button ion-button outline class="btn" (click)="goBack()">Back</button>\n\n  </div>\n\n\n\n\n\n\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Apps\HybridSum\HybridSum1.1\HybridSumm\HybridSumm1.1\HybridSum1.1\HybridSumm\src\pages\result\result.html"*/,
+            selector: 'page-result',template:/*ion-inline-start:"C:\Apps\HybridSum\HybridSum1.1\HybridSumm\HybridSumm1.1\HybridSum1.1\HybridSumm\src\pages\result\result.html"*/'<!--\n\n  Generated template for the ResultPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar hideBackButton>\n\n    <ion-title>\n\n      Summary Result\n\n    </ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <ion-card>\n\n\n\n      <ion-item id="selectIdiom" style="width:30%; margin-left:87%;">\n\n          <ion-select [(ngModel)]="languageToTranslate" multiple="false" (ngModelChange)="translate($event)">\n\n          <ion-option [value]="l.initials" *ngFor="let l of languageAvaible"\n\n           [selected]="l.initials === resultSumm.sLanguage">\n\n            {{l.language}}\n\n          </ion-option>\n\n\n\n        </ion-select>\n\n      </ion-item>\n\n\n\n    <ion-card-content>\n\n      <br>{{resultSumm.sTitle}}<br>\n\n      <div class="hr"></div>\n\n      <br>{{resultSumm.sText}}\n\n    </ion-card-content>\n\n\n\n  </ion-card>\n\n  <br>\n\n\n\n  <div *ngIf="resultSumm.sText">\n\n      <button ion-button outline class="btn" id="buttonBack" (click)="goBack()">Back</button>\n\n          \n\n\n\n            \n\n      \n\n      \n\n\n\n  </div>\n\n\n\n <!--\n\n\n\n\n\n\n\n -->\n\n\n\n\n\n\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Apps\HybridSum\HybridSum1.1\HybridSumm\HybridSumm1.1\HybridSum1.1\HybridSumm\src\pages\result\result.html"*/,
+            providers: [__WEBPACK_IMPORTED_MODULE_2__home_translate_google_services__["b" /* GoogleService */], __WEBPACK_IMPORTED_MODULE_2__home_translate_google_services__["a" /* GoogleObj */]]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__home_translate_google_services__["b" /* GoogleService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__home_translate_google_services__["b" /* GoogleService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__home_translate_google_services__["a" /* GoogleObj */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__home_translate_google_services__["a" /* GoogleObj */]) === "function" && _d || Object])
     ], ResultPage);
     return ResultPage;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=result.js.map
@@ -196,7 +334,59 @@ module.exports = webpackAsyncContext;
 
 /***/ }),
 
-/***/ 199:
+/***/ 156:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return GoogleService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GoogleObj; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(157);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var GoogleService = /** @class */ (function () {
+    function GoogleService(_http) {
+        this._http = _http;
+        this.key = "AIzaSyDayupNAHot4Rst1q2lMuzvqB_W3He33j4";
+    }
+    GoogleService.prototype.translate = function (obj) {
+        return this._http.post(url + this.key, obj);
+    };
+    GoogleService.prototype.detect = function (obj) {
+        return this._http.post(urlDetect + this.key, obj);
+    };
+    GoogleService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
+    ], GoogleService);
+    return GoogleService;
+}());
+
+var url = 'https://translation.googleapis.com/language/translate/v2?key=';
+var urlDetect = 'https://translation.googleapis.com/language/translate/v2/detect?key=';
+var GoogleObj = /** @class */ (function () {
+    function GoogleObj() {
+        this.source = "en";
+        this.target = "en";
+        this.format = 'text';
+    }
+    return GoogleObj;
+}());
+
+//# sourceMappingURL=google.services.js.map
+
+/***/ }),
+
+/***/ 201:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -205,8 +395,8 @@ module.exports = webpackAsyncContext;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__result_result__ = __webpack_require__(101);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__methodsSummarizer_nlp__ = __webpack_require__(200);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__translate_google_services__ = __webpack_require__(280);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__methodsSummarizer_nlp__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__translate_google_services__ = __webpack_require__(156);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__about_about__ = __webpack_require__(50);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -235,7 +425,6 @@ var HomePage = /** @class */ (function () {
         this._google = _google;
         this.sLanguage = "";
         this.googleObj = new __WEBPACK_IMPORTED_MODULE_5__translate_google_services__["a" /* GoogleObj */]();
-        this.key = "AIzaSyDayupNAHot4Rst1q2lMuzvqB_W3He33j4";
         this.textTranslated = false;
         this.summForm = formbuilder.group({
             sTitle: ['', __WEBPACK_IMPORTED_MODULE_3__angular_forms__["f" /* Validators */].required],
@@ -261,14 +450,14 @@ var HomePage = /** @class */ (function () {
         var resultTitle = this.sTitle.value;
         var resultLength = this.sLength.value;
         this.googleObj.q = resultText;
-        this._google.detect(this.googleObj, this.key).subscribe(function (res) {
+        this._google.detect(this.googleObj).subscribe(function (res) {
             var jsonObj = res.data.detections[0];
             if (jsonObj[0].confidence >= 0.4) {
                 _this.sLanguage = jsonObj[0].language;
                 if (_this.sLanguage == "en" ||
                     _this.sLanguage == "pt" ||
                     _this.sLanguage == "es") {
-                    console.log("it doesn't need to translate");
+                    console.log("it doesn't need to be translated");
                     _this.nlp.eraseArrayObjectSentence();
                     _this.nlp.eraseArrayObjectWord();
                     _this.nlp.nlp(resultTitle, resultText, resultLength);
@@ -276,16 +465,17 @@ var HomePage = /** @class */ (function () {
                     _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__result_result__["a" /* ResultPage */], {
                         paramTitle: resultTitle,
                         paramText: resultText,
-                        paramLength: resultLength
+                        paramLength: resultLength,
+                        paramLanguage: _this.sLanguage
                     });
                 }
                 else {
                     _this.googleObj.source = _this.sLanguage;
-                    _this._google.translate(_this.googleObj, _this.key).subscribe(function (res) {
+                    _this._google.translate(_this.googleObj).subscribe(function (res) {
                         resultText = res.data.translations[0].translatedText;
                         _this.textTranslated = true;
                         _this.googleObj.q = resultTitle;
-                        _this._google.translate(_this.googleObj, _this.key).subscribe(function (res) {
+                        _this._google.translate(_this.googleObj).subscribe(function (res) {
                             resultTitle = res.data.translations[0].translatedText;
                             console.log('Summary Text Sucess.');
                             _this.nlp.eraseArrayObjectSentence();
@@ -296,16 +486,17 @@ var HomePage = /** @class */ (function () {
                                 _this.googleObj.q = resultText;
                                 _this.googleObj.target = _this.sLanguage;
                                 _this.googleObj.source = "en";
-                                _this._google.translate(_this.googleObj, _this.key).subscribe(function (res) {
+                                _this._google.translate(_this.googleObj).subscribe(function (res) {
                                     resultText = res.data.translations[0].translatedText;
                                     console.log(resultText);
                                     _this.googleObj.q = resultTitle;
-                                    _this._google.translate(_this.googleObj, _this.key).subscribe(function (res) {
+                                    _this._google.translate(_this.googleObj).subscribe(function (res) {
                                         resultTitle = res.data.translations[0].translatedText;
                                         _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__result_result__["a" /* ResultPage */], {
                                             paramTitle: resultTitle,
                                             paramText: resultText,
-                                            paramLength: resultLength
+                                            paramLength: resultLength,
+                                            paramLanguage: _this.sLanguage
                                         });
                                     }, function (err) {
                                         console.log(err);
@@ -337,8 +528,8 @@ var HomePage = /** @class */ (function () {
     ], HomePage.prototype, "onInput", null);
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"C:\Apps\HybridSum\HybridSum1.1\HybridSumm\HybridSumm1.1\HybridSum1.1\HybridSumm\src\pages\home\home.html"*/'<br>\n\n<ion-header>\n\n  <ion-navbar>\n\n\n\n    <ion-title>\n\n      Menu\n\n    </ion-title>\n\n\n\n    <ion-buttons start>\n\n      <button ion-button icon-only menuToggle="left">\n\n        <ion-icon name="menu"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n\n\n  <form [formGroup]="summForm" novalidate (submit)="nextPageWithData()">\n\n\n\n  <ion-item>\n\n    <ion-label stacked class="label-md-dark">Title</ion-label>\n\n    <ion-input placeholder="Ex: The Bio-informatics" formControlName="sTitle" ></ion-input>\n\n  </ion-item>\n\n\n\n  <p *ngIf="sTitle.hasError(\'required\') && sTitle.touched" class="erro">You must enter a title to summarize.</p>\n\n\n\n\n\n  <ion-item>\n\n    <ion-label stacked >Text</ion-label>\n\n    <ion-textarea placeholder="Place the text that you want to summarize." formControlName="sText" class="texto"></ion-textarea>\n\n  </ion-item>\n\n\n\n  <p *ngIf="sText.hasError(\'required\') && sText.touched" class="erro">You must enter a text to summarize.</p>\n\n\n\n  <ion-item>\n\n    <ion-label stacked>Sentence Length</ion-label>\n\n    <ion-input type="number" formControlName="sLength"></ion-input>\n\n  </ion-item>\n\n\n\n  <p *ngIf="sLength.hasError(\'required\') && sLength.touched" class="erro">You must enter the sentence length to summarize.</p>\n\n\n\n  <br>\n\n\n\n  <button ion-button outline class="btn" type="submit" [disabled]="!summForm.valid">Summarize</button>\n\n\n\n  </form>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Apps\HybridSum\HybridSum1.1\HybridSumm\HybridSumm1.1\HybridSum1.1\HybridSumm\src\pages\home\home.html"*/,
-            providers: [__WEBPACK_IMPORTED_MODULE_4__methodsSummarizer_nlp__["a" /* Nlp */], __WEBPACK_IMPORTED_MODULE_5__translate_google_services__["b" /* GoogleService */]]
+            selector: 'page-home',template:/*ion-inline-start:"C:\Apps\HybridSum\HybridSum1.1\HybridSumm\HybridSumm1.1\HybridSum1.1\HybridSumm\src\pages\home\home.html"*/'<br>\n\n<ion-header>\n\n  <ion-navbar>\n\n\n\n    <ion-title>\n\n      Menu\n\n    </ion-title>\n\n\n\n    <ion-buttons start>\n\n      <button ion-button icon-only menuToggle="left">\n\n        <ion-icon name="menu"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n\n\n  <form [formGroup]="summForm" novalidate (submit)="nextPageWithData()">\n\n\n\n  <ion-item>\n\n    <ion-label stacked class="label-md-dark">Title</ion-label>\n\n    <ion-input placeholder="Ex: The Bio-informatics" formControlName="sTitle" ></ion-input>\n\n  </ion-item>\n\n\n\n  <p *ngIf="sTitle.hasError(\'required\') && sTitle.touched" class="erro">You must enter a title to summarize.</p>\n\n\n\n\n\n  <ion-item>\n\n    <ion-label stacked >Text</ion-label>\n\n    <ion-textarea placeholder="Place the text that you want to summarize." formControlName="sText" class="texto"></ion-textarea>\n\n  </ion-item>\n\n\n\n  <p *ngIf="sText.hasError(\'required\') && sText.touched" class="erro">You must enter a text to summarize.</p>\n\n\n\n  <ion-item>\n\n    <ion-label stacked>Sentence Length</ion-label>\n\n    <ion-input type="number" formControlName="sLength"></ion-input>\n\n  </ion-item>\n\n\n\n  <p *ngIf="sLength.hasError(\'required\') && sLength.touched" class="erro">You must enter the sentence length to summarize.</p>\n\n\n\n  <br>\n\n\n\n  <button ion-button outline class="btn" type="submit" [disabled]="!summForm.valid">Summarize</button>\n\n  \n\n  </form>\n\n  \n\n</ion-content>\n\n'/*ion-inline-end:"C:\Apps\HybridSum\HybridSum1.1\HybridSumm\HybridSumm1.1\HybridSum1.1\HybridSumm\src\pages\home\home.html"*/,
+            providers: [__WEBPACK_IMPORTED_MODULE_4__methodsSummarizer_nlp__["a" /* Nlp */], __WEBPACK_IMPORTED_MODULE_5__translate_google_services__["b" /* GoogleService */], __WEBPACK_IMPORTED_MODULE_5__translate_google_services__["a" /* GoogleObj */]]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* MenuController */],
             __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */],
@@ -351,18 +542,18 @@ var HomePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 200:
+/***/ 202:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Nlp; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__word_model__ = __webpack_require__(274);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__sentence_model__ = __webpack_require__(275);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__word_model__ = __webpack_require__(280);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__sentence_model__ = __webpack_require__(281);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__scripts_stopWords__ = __webpack_require__(100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__scripts_wordFrequency__ = __webpack_require__(276);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__scripts_upperCase__ = __webpack_require__(277);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__scripts_TFIDF__ = __webpack_require__(278);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__scripts_titleResemblance__ = __webpack_require__(279);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__scripts_wordFrequency__ = __webpack_require__(282);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__scripts_upperCase__ = __webpack_require__(283);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__scripts_TFIDF__ = __webpack_require__(284);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__scripts_titleResemblance__ = __webpack_require__(285);
 
 
 
@@ -503,13 +694,13 @@ var Nlp = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 202:
+/***/ 203:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(203);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(223);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(224);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -517,7 +708,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 223:
+/***/ 224:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -525,15 +716,15 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(195);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(200);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(273);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_home_home__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(279);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_home_home__ = __webpack_require__(201);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_result_result__ = __webpack_require__(101);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_about_about__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_home_methodsSummarizer_nlp__ = __webpack_require__(200);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_common_http__ = __webpack_require__(201);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_home_methodsSummarizer_nlp__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_common_http__ = __webpack_require__(157);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -596,16 +787,16 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 273:
+/***/ 279:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(198);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(195);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(201);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_about_about__ = __webpack_require__(50);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -663,7 +854,7 @@ var MyApp = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 274:
+/***/ 280:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -683,7 +874,7 @@ var Word = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 275:
+/***/ 281:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -706,7 +897,7 @@ var Sentence = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 276:
+/***/ 282:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -731,7 +922,7 @@ function frequenceText(arrayObjectWord, arrayObjectSentence) {
 
 /***/ }),
 
-/***/ 277:
+/***/ 283:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -790,7 +981,7 @@ function upperCase(arrayObjectSentence) {
 
 /***/ }),
 
-/***/ 278:
+/***/ 284:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -827,7 +1018,7 @@ function IDF(objectWord, arrayObjectSentence) {
 
 /***/ }),
 
-/***/ 279:
+/***/ 285:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -882,57 +1073,6 @@ function titleResemblance(title, arrayObjectSentence) {
 
 /***/ }),
 
-/***/ 280:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return GoogleService; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GoogleObj; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(201);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var GoogleService = /** @class */ (function () {
-    function GoogleService(_http) {
-        this._http = _http;
-    }
-    GoogleService.prototype.translate = function (obj, key) {
-        return this._http.post(url + key, obj);
-    };
-    GoogleService.prototype.detect = function (obj, key) {
-        return this._http.post(urlDetect + key, obj);
-    };
-    GoogleService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
-    ], GoogleService);
-    return GoogleService;
-}());
-
-var url = 'https://translation.googleapis.com/language/translate/v2?key=';
-var urlDetect = 'https://translation.googleapis.com/language/translate/v2/detect?key=';
-var GoogleObj = /** @class */ (function () {
-    function GoogleObj() {
-        this.source = "en";
-        this.target = "en";
-        this.format = 'text';
-    }
-    return GoogleObj;
-}());
-
-//# sourceMappingURL=google.services.js.map
-
-/***/ }),
-
 /***/ 50:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -978,5 +1118,5 @@ var AboutPage = /** @class */ (function () {
 
 /***/ })
 
-},[202]);
+},[203]);
 //# sourceMappingURL=main.js.map

@@ -19,20 +19,40 @@
 
   <ion-card>
 
+      <ion-item id="selectIdiom" style="width:30%; margin-left:87%;">
+          <ion-select [(ngModel)]="languageToTranslate" multiple="false" (ngModelChange)="translate($event)">
+          <ion-option [value]="l.initials" *ngFor="let l of languageAvaible"
+           [selected]="l.initials === resultSumm.sLanguage">
+            {{l.language}}
+          </ion-option>
+
+        </ion-select>
+      </ion-item>
 
     <ion-card-content>
-      <b>Title:</b><br><br>{{resultSumm.sTitle}}<br>
+      <br>{{resultSumm.sTitle}}<br>
       <div class="hr"></div>
-      <b>Summary Output:</b><br><br>{{resultSumm.sText}}
+      <br>{{resultSumm.sText}}
     </ion-card-content>
 
   </ion-card>
   <br>
 
   <div *ngIf="resultSumm.sText">
-    <button ion-button outline class="btn">Translate Summary</button>
-    <button ion-button outline class="btn" (click)="goBack()">Back</button>
+      <button ion-button outline class="btn" id="buttonBack" (click)="goBack()">Back</button>
+          
+
+            
+      
+      
+
   </div>
+
+ <!--
+
+
+
+ -->
 
 
 
