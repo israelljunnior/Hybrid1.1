@@ -24,9 +24,9 @@ const url = 'https://translation.googleapis.com/language/translate/v2?key=';
 const urlDetect = 'https://translation.googleapis.com/language/translate/v2/detect?key=' ;
 export class GoogleObj {
 
-  q: string;
-  source: string = "en";
-  target: string = "en";
+  q: string; // texto para traduzir
+  source: string = "en"; // língua do texto
+  target: string = "en"; // alvo
   format: string = 'text';
 
   constructor() {}

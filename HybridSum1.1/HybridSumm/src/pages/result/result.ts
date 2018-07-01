@@ -33,6 +33,8 @@ export class ResultPage {
     sLanguage: this.navParams.get('paramLanguage')
   }
 
+
+  // função para tradução automática do texto sumarizado e o título
   translate($event) {
     let language = $event;
     this.googleObj.q = this.resultSumm.sText
@@ -70,7 +72,7 @@ export class ResultPage {
   }
 
 
-  public languageAvaible: any = [
+  public languagesAvailable: any = [
 
     {language:"Afrikaans", initials: "af"},
     {language:"Albanian", initials: "sq"},
@@ -143,7 +145,8 @@ export class ResultPage {
     {language:"Pashto", initials: "ps"},
     {language:"Persian", initials: "fa"},
     {language:"Polish", initials: "pl"},
-    {language:"English", initials: "en"},
+    {language:"Brazillian Portuguese", initials: "pt-br"},
+    {language:"Portuguese", initials: "pt"},
     {language:"Punjabi", initials: "Pa"},
     {language:"Romanian", initials: "ro"},
     {language:"Russian", initials: "ru"},

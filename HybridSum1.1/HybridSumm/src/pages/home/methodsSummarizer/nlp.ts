@@ -19,12 +19,13 @@ export class Nlp {
     private arrayObjectSentence: Sentence[] = []
 
     
+    //Principal função summarizer
     public nlp(title: any, text: any, nSentences: number) {
        
         this.title = this.removeHtmlXml(title)
         this.text = this.removeHtmlXml(text)
         this.numberSentenceInSummarizied = nSentences
-        
+        this.setTextSummarizer("");
         // Methods
         this.splitText(this.text)
         this.createObjectWord()
@@ -36,7 +37,7 @@ export class Nlp {
         this.summ(this.arrayObjectSentence, this.numberSentenceInSummarizied)
 
     }
-    // getters and setters 
+    // getters, setters and erasers
     public getText(): string { return this.text }
     public setText(newText: string) { this.text = newText }
 
@@ -50,7 +51,7 @@ export class Nlp {
     public eraseArrayObjectWord():void { this.arrayObjectWord = [] }
     public getArrayObjectSentence(): Sentence[] { return this.arrayObjectSentence }
     public eraseArrayObjectSentence():void { this.arrayObjectSentence = [] }
-    //constructor(text: string) { this.text = text }
+    
     
     //METHODS
     // remove tags
@@ -58,29 +59,33 @@ export class Nlp {
         string = removeHtmlXml(string)
         return string
     }
-    // this method remove all StopWords in text
+    // método para remover as stop words
     public removeStopWords(string: string): string { 
         string = removeStopWords(string)
         return string
     }
 
+    // checa a frequência da palavras em cada sentença
     public frequenceText(arrayObjectWord: Word[], arrayObjectSentence: Sentence[]) {
        frequenceText(arrayObjectWord, arrayObjectSentence)
     }
 
+    //checa caso quando um sentença possue uma palavra com letra maiúscula 
     public upperCase(arrayObjectSentence: Sentence[]) {
         upperCase(arrayObjectSentence)
     }
-    
+
+    //Método frequencia do termo pelo inverso da frequencia no documento
     public TFIDF(arrayObjectWord: Word[], arrayObjectSentence: Sentence[]) {
         TFIDF(arrayObjectWord, arrayObjectSentence)
     }
 
+    // calcula a pontuação de acordo com relação entre o título e a sentença
     public titleResemblance(title: string, arrayObjectSentence: Sentence[]) {
         titleResemblance(title, arrayObjectSentence)
     }
     
-    //split text in sentences and create objectSentence
+    //separa o texto em sentenças e cria o objeto Sentence
     public splitText(string: string) {
         let indexSentence = 0
         for(let i = 0; i < string.length; i++) {
@@ -108,7 +113,7 @@ export class Nlp {
         }
     }
 
-    //Create objectWord
+    //Cria o objetoWord 
     public createObjectWord() {
         let words: string[] = this.text.match(/(\w|\s)*\w(?=")|[\w\u00C0-\u00FF]+/ig) //get all elements in text
         let isWord = new RegExp(/[\w\u00C0-\u00FF]/ig)
@@ -133,6 +138,7 @@ export class Nlp {
         }
     }
 
+    // Calcular e ordena as sentenças de acordo com sua pontuação
     public ranking(arrayObjectSentence:Sentence[]): Sentence[] {
 
         let ranking: Sentence[] = arrayObjectSentence.sort(function (a , b) { return b.finalScore - a.finalScore})
@@ -141,10 +147,11 @@ export class Nlp {
 
     }
 
+    // gerar o sumário de acordo com o resultado do ranking
     public summ(arrayObjectSentence: Sentence[], length: number): void {
 
       let arraySentenceSumm: Sentence[] = []
-
+  
 
         for(let i = 0; i < length; i++){
         arraySentenceSumm.push(arrayObjectSentence[i])    

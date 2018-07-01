@@ -137,7 +137,7 @@ var ResultPage = /** @class */ (function () {
             sLength: this.navParams.get('paramLength'),
             sLanguage: this.navParams.get('paramLanguage')
         };
-        this.languageAvaible = [
+        this.languagesAvailable = [
             { language: "Afrikaans", initials: "af" },
             { language: "Albanian", initials: "sq" },
             { language: "Amharic", initials: "am" },
@@ -209,7 +209,8 @@ var ResultPage = /** @class */ (function () {
             { language: "Pashto", initials: "ps" },
             { language: "Persian", initials: "fa" },
             { language: "Polish", initials: "pl" },
-            { language: "English", initials: "en" },
+            { language: "Brazillian Portuguese", initials: "pt-br" },
+            { language: "Portuguese", initials: "pt" },
             { language: "Punjabi", initials: "Pa" },
             { language: "Romanian", initials: "ro" },
             { language: "Russian", initials: "ru" },
@@ -244,6 +245,7 @@ var ResultPage = /** @class */ (function () {
             { language: "Zulu", initials: "zu" },
         ];
     }
+    // função para tradução automática do texto sumarizado e o título
     ResultPage.prototype.translate = function ($event) {
         var _this = this;
         var language = $event;
@@ -275,13 +277,13 @@ var ResultPage = /** @class */ (function () {
     ], ResultPage.prototype, "languageToTranslate", void 0);
     ResultPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-result',template:/*ion-inline-start:"C:\Apps\HybridSum\HybridSum1.1\HybridSumm\HybridSumm1.1\HybridSum1.1\HybridSumm\src\pages\result\result.html"*/'<!--\n\n  Generated template for the ResultPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar hideBackButton>\n\n    <ion-title>\n\n      Summary Result\n\n    </ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <ion-card>\n\n\n\n      <ion-item id="selectIdiom" style="width:30%; margin-left:87%;">\n\n          <ion-select [(ngModel)]="languageToTranslate" multiple="false" (ngModelChange)="translate($event)">\n\n          <ion-option [value]="l.initials" *ngFor="let l of languageAvaible"\n\n           [selected]="l.initials === resultSumm.sLanguage">\n\n            {{l.language}}\n\n          </ion-option>\n\n\n\n        </ion-select>\n\n      </ion-item>\n\n\n\n    <ion-card-content>\n\n      <br>{{resultSumm.sTitle}}<br>\n\n      <div class="hr"></div>\n\n      <br>{{resultSumm.sText}}\n\n    </ion-card-content>\n\n\n\n  </ion-card>\n\n  <br>\n\n\n\n  <div *ngIf="resultSumm.sText">\n\n      <button ion-button outline class="btn" id="buttonBack" (click)="goBack()">Back</button>\n\n          \n\n\n\n            \n\n      \n\n      \n\n\n\n  </div>\n\n\n\n <!--\n\n\n\n\n\n\n\n -->\n\n\n\n\n\n\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Apps\HybridSum\HybridSum1.1\HybridSumm\HybridSumm1.1\HybridSum1.1\HybridSumm\src\pages\result\result.html"*/,
+            selector: 'page-result',template:/*ion-inline-start:"C:\Apps\HybridSum\HybridSum1.1\HybridSumm\HybridSumm1.1\HybridSum1.1\HybridSumm\src\pages\result\result.html"*/'<!--\n\n  Generated template for the ResultPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar hideBackButton>\n\n    <ion-title>\n\n      Summary Result\n\n    </ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <ion-card>\n\n\n\n      <ion-item id="selectIdiom" style="width:30%; margin-left:87%;">\n\n          <ion-select [(ngModel)]="languageToTranslate" multiple="false" (ngModelChange)="translate($event)">\n\n          <ion-option [value]="l.initials" *ngFor="let l of languagesAvailable"\n\n           [selected]="l.initials === resultSumm.sLanguage">\n\n            {{l.language}}\n\n          </ion-option>\n\n\n\n        </ion-select>\n\n      </ion-item>\n\n\n\n    <ion-card-content>\n\n      <br>{{resultSumm.sTitle}}<br>\n\n      <div class="hr"></div>\n\n      <br>{{resultSumm.sText}}\n\n    </ion-card-content>\n\n\n\n  </ion-card>\n\n  <br>\n\n\n\n  <div *ngIf="resultSumm.sText">\n\n      <button ion-button outline class="btn" id="buttonBack" (click)="goBack()">Back</button>\n\n          \n\n\n\n            \n\n      \n\n      \n\n\n\n  </div>\n\n\n\n <!--\n\n\n\n\n\n\n\n -->\n\n\n\n\n\n\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Apps\HybridSum\HybridSum1.1\HybridSumm\HybridSumm1.1\HybridSum1.1\HybridSumm\src\pages\result\result.html"*/,
             providers: [__WEBPACK_IMPORTED_MODULE_2__home_translate_google_services__["b" /* GoogleService */], __WEBPACK_IMPORTED_MODULE_2__home_translate_google_services__["a" /* GoogleObj */]]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__home_translate_google_services__["b" /* GoogleService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__home_translate_google_services__["b" /* GoogleService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__home_translate_google_services__["a" /* GoogleObj */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__home_translate_google_services__["a" /* GoogleObj */]) === "function" && _d || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__home_translate_google_services__["b" /* GoogleService */], __WEBPACK_IMPORTED_MODULE_2__home_translate_google_services__["a" /* GoogleObj */]])
     ], ResultPage);
     return ResultPage;
-    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=result.js.map
@@ -366,17 +368,18 @@ var GoogleService = /** @class */ (function () {
     };
     GoogleService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
     ], GoogleService);
     return GoogleService;
+    var _a;
 }());
 
 var url = 'https://translation.googleapis.com/language/translate/v2?key=';
 var urlDetect = 'https://translation.googleapis.com/language/translate/v2/detect?key=';
 var GoogleObj = /** @class */ (function () {
     function GoogleObj() {
-        this.source = "en";
-        this.target = "en";
+        this.source = "en"; // língua do texto
+        this.target = "en"; // alvo
         this.format = 'text';
     }
     return GoogleObj;
@@ -446,22 +449,40 @@ var HomePage = /** @class */ (function () {
     };
     HomePage.prototype.nextPageWithData = function () {
         var _this = this;
-        var resultText = this.sText.value;
-        var resultTitle = this.sTitle.value;
-        var resultLength = this.sLength.value;
+        var resultText = "";
+        var resultTitle = "";
+        var resultLength = 0;
+        // Variáveis para pegar os valores dos inputs da página inicial
+        resultText = this.sText.value;
+        resultTitle = this.sTitle.value;
+        resultLength = this.sLength.value;
+        /*
+        *
+        * Primeira consulta usando a API do Google Translate com o objetivo de detectar a língua do texto.
+        * Caso a língua seja Portugês, inglês ou espanhol não será necessario, devido que nosso array de stop words
+        * possue nessas três línguas.
+        *
+        * funcionamento:
+        *
+        * 1. fazemos uma consulta http passando um objeto com as informações necessarias,
+        *    a consulta retorna um objeto Json.
+        */
         this.googleObj.q = resultText;
         this._google.detect(this.googleObj).subscribe(function (res) {
             var jsonObj = res.data.detections[0];
             if (jsonObj[0].confidence >= 0.4) {
                 _this.sLanguage = jsonObj[0].language;
+                //2. verificar se a linguagem é em en,pt ou es;
                 if (_this.sLanguage == "en" ||
                     _this.sLanguage == "pt" ||
-                    _this.sLanguage == "es") {
+                    _this.sLanguage == "es" || _this.sLanguage == "pt-br") {
                     console.log("it doesn't need to be translated");
+                    // 3. Funções da Classe nlp onde ocorre o processamento do texto
                     _this.nlp.eraseArrayObjectSentence();
                     _this.nlp.eraseArrayObjectWord();
                     _this.nlp.nlp(resultTitle, resultText, resultLength);
                     resultText = _this.nlp.getTextSummarizer();
+                    //4. passa os resultados para outra página
                     _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__result_result__["a" /* ResultPage */], {
                         paramTitle: resultTitle,
                         paramText: resultText,
@@ -470,6 +491,10 @@ var HomePage = /** @class */ (function () {
                     });
                 }
                 else {
+                    /*
+                     * 2. Aqui ocorre outra consulta http, agora traduzindo o texto e o título para inglês
+                     *  e depois fazendo o processamento do texto
+                     */
                     _this.googleObj.source = _this.sLanguage;
                     _this._google.translate(_this.googleObj).subscribe(function (res) {
                         resultText = res.data.translations[0].translatedText;
@@ -477,11 +502,11 @@ var HomePage = /** @class */ (function () {
                         _this.googleObj.q = resultTitle;
                         _this._google.translate(_this.googleObj).subscribe(function (res) {
                             resultTitle = res.data.translations[0].translatedText;
-                            console.log('Summary Text Sucess.');
                             _this.nlp.eraseArrayObjectSentence();
                             _this.nlp.eraseArrayObjectWord();
                             _this.nlp.nlp(resultTitle, resultText, resultLength);
                             resultText = _this.nlp.getTextSummarizer();
+                            // 3. traduz o texto para língua original
                             if (_this.textTranslated == true) {
                                 _this.googleObj.q = resultText;
                                 _this.googleObj.target = _this.sLanguage;
@@ -568,10 +593,12 @@ var Nlp = /** @class */ (function () {
         this.arrayObjectWord = [];
         this.arrayObjectSentence = [];
     }
+    //Principal função summarizer
     Nlp.prototype.nlp = function (title, text, nSentences) {
         this.title = this.removeHtmlXml(title);
         this.text = this.removeHtmlXml(text);
         this.numberSentenceInSummarizied = nSentences;
+        this.setTextSummarizer("");
         // Methods
         this.splitText(this.text);
         this.createObjectWord();
@@ -582,7 +609,7 @@ var Nlp = /** @class */ (function () {
         this.arrayObjectSentence = this.ranking(this.arrayObjectSentence);
         this.summ(this.arrayObjectSentence, this.numberSentenceInSummarizied);
     };
-    // getters and setters 
+    // getters, setters and erasers
     Nlp.prototype.getText = function () { return this.text; };
     Nlp.prototype.setText = function (newText) { this.text = newText; };
     Nlp.prototype.getTitle = function () { return this.title; };
@@ -593,31 +620,34 @@ var Nlp = /** @class */ (function () {
     Nlp.prototype.eraseArrayObjectWord = function () { this.arrayObjectWord = []; };
     Nlp.prototype.getArrayObjectSentence = function () { return this.arrayObjectSentence; };
     Nlp.prototype.eraseArrayObjectSentence = function () { this.arrayObjectSentence = []; };
-    //constructor(text: string) { this.text = text }
     //METHODS
     // remove tags
     Nlp.prototype.removeHtmlXml = function (string) {
         string = Object(__WEBPACK_IMPORTED_MODULE_2__scripts_stopWords__["a" /* removeHtmlXml */])(string);
         return string;
     };
-    // this method remove all StopWords in text
+    // método para remover as stop words
     Nlp.prototype.removeStopWords = function (string) {
         string = Object(__WEBPACK_IMPORTED_MODULE_2__scripts_stopWords__["b" /* removeStopWords */])(string);
         return string;
     };
+    // checa a frequência da palavras em cada sentença
     Nlp.prototype.frequenceText = function (arrayObjectWord, arrayObjectSentence) {
         Object(__WEBPACK_IMPORTED_MODULE_3__scripts_wordFrequency__["a" /* frequenceText */])(arrayObjectWord, arrayObjectSentence);
     };
+    //checa caso quando um sentença possue uma palavra com letra maiúscula 
     Nlp.prototype.upperCase = function (arrayObjectSentence) {
         Object(__WEBPACK_IMPORTED_MODULE_4__scripts_upperCase__["a" /* upperCase */])(arrayObjectSentence);
     };
+    //Método frequencia do termo pelo inverso da frequencia no documento
     Nlp.prototype.TFIDF = function (arrayObjectWord, arrayObjectSentence) {
         Object(__WEBPACK_IMPORTED_MODULE_5__scripts_TFIDF__["a" /* TFIDF */])(arrayObjectWord, arrayObjectSentence);
     };
+    // calcula a pontuação de acordo com relação entre o título e a sentença
     Nlp.prototype.titleResemblance = function (title, arrayObjectSentence) {
         Object(__WEBPACK_IMPORTED_MODULE_6__scripts_titleResemblance__["a" /* titleResemblance */])(title, arrayObjectSentence);
     };
-    //split text in sentences and create objectSentence
+    //separa o texto em sentenças e cria o objeto Sentence
     Nlp.prototype.splitText = function (string) {
         var indexSentence = 0;
         for (var i = 0; i < string.length; i++) {
@@ -642,7 +672,7 @@ var Nlp = /** @class */ (function () {
             }
         }
     };
-    //Create objectWord
+    //Cria o objetoWord 
     Nlp.prototype.createObjectWord = function () {
         var words = this.text.match(/(\w|\s)*\w(?=")|[\w\u00C0-\u00FF]+/ig); //get all elements in text
         var isWord = new RegExp(/[\w\u00C0-\u00FF]/ig);
@@ -672,10 +702,12 @@ var Nlp = /** @class */ (function () {
             _loop_1(i);
         }
     };
+    // Calcular e ordena as sentenças de acordo com sua pontuação
     Nlp.prototype.ranking = function (arrayObjectSentence) {
         var ranking = arrayObjectSentence.sort(function (a, b) { return b.finalScore - a.finalScore; });
         return ranking;
     };
+    // gerar o sumário de acordo com o resultado do ranking
     Nlp.prototype.summ = function (arrayObjectSentence, length) {
         var _this = this;
         var arraySentenceSumm = [];

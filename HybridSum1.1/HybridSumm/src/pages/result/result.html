@@ -21,7 +21,7 @@
 
       <ion-item id="selectIdiom" style="width:30%; margin-left:87%;">
           <ion-select [(ngModel)]="languageToTranslate" multiple="false" (ngModelChange)="translate($event)">
-          <ion-option [value]="l.initials" *ngFor="let l of languageAvaible"
+          <ion-option [value]="l.initials" *ngFor="let l of languagesAvailable"
            [selected]="l.initials === resultSumm.sLanguage">
             {{l.language}}
           </ion-option>
