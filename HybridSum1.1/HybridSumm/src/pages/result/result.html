@@ -16,10 +16,14 @@
 
 
 <ion-content padding>
-
+  
+  <ion-title>
+          Translate
+  </ion-title>
+  
   <ion-card>
 
-      <ion-item id="selectIdiom" style="width:30%; margin-left:87%;">
+      <ion-item id="selectIdiom" style="">
           <ion-select [(ngModel)]="languageToTranslate" multiple="false" (ngModelChange)="translate($event)">
           <ion-option [value]="l.initials" *ngFor="let l of languagesAvailable"
            [selected]="l.initials === resultSumm.sLanguage">
@@ -28,9 +32,9 @@
 
         </ion-select>
       </ion-item>
-
+    <div class="hr"></div>
     <ion-card-content>
-      <br>{{resultSumm.sTitle}}<br>
+      {{resultSumm.sTitle}}<br>
       <div class="hr"></div>
       <br>{{resultSumm.sText}}
     </ion-card-content>
