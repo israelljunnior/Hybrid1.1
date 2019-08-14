@@ -1,4 +1,4 @@
-# Hybrid1.1
+# HybridSumm
 
 HybridSumm foi um projeto criado por alunos do IFPE em seu projeto de extenção chamado: PORTABILIDADE DE UMA APLICAÇÃO MOBILE DE SUMARIZAÇÃO  AUTOMÁTICA TEXTUAL MULTILÍNGUE PARA MÚLTIPLAS PLATAFORMAS. Para mais informações sobre o projeto leia nosso artigo em
 <https://sol.sbc.org.br/index.php/encompif/article/view/3560>.
