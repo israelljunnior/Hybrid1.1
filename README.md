@@ -6,6 +6,6 @@ HybridSumm foi um projeto criado por alunos do IFPE em seu projeto de extenção
 Este repositório é dividido em duas seções "PURE" e "HybridSum". Pure é um versão somente utilizando html e javascript puro, utilizando 
 somente as funções sumarizadoras. HybridSumm é a versão final do projeto, utilizando Ionic 3 e a API do Google Translate.
 
-Criadores: Henrique Nunes Mendes1, Israel Gomes de Sena Júnior.
+Criadores: Henrique Nunes Mendes, Israel Gomes de Sena Júnior.
 Orientador: Luciano Cabral.
 
